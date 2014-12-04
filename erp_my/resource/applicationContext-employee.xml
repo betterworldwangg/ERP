@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:aop="http://www.springframework.org/schema/aop" xmlns:tx="http://www.springframework.org/schema/tx"
+	xmlns:jee="http://www.springframework.org/schema/jee"
+	xsi:schemaLocation="
+		http://www.springframework.org/schema/beans 
+		http://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/context 
+		http://www.springframework.org/schema/context/spring-context.xsd
+		http://www.springframework.org/schema/tx 
+		http://www.springframework.org/schema/tx/spring-tx.xsd
+		http://www.springframework.org/schema/aop 
+		http://www.springframework.org/schema/aop/spring-aop.xsd
+		http://www.springframework.org/schema/jee 
+		http://www.springframework.org/schema/jee/spring-jee-3.2.xsd
+		">  
+
+	<!-- 配置Dao层 -->
+	<bean id="employeeDao" class="org.erp.auth.employee.dao.impl.EmployeeDaoImpl">
+		<property name="hibernateTemp" ref="hibernateTemplate"/>
+	</bean>
+	
+	<!-- 配置Service层 -->
+	<bean id="employeeServ" class="org.erp.auth.employee.service.impl.EmployeeServiceImpl">
+		<property name="employeeDao" ref="employeeDao"/>
+	</bean>
+	
+	<!-- 配置Action层 -->
+	<bean id="employeeAction" class="org.erp.auth.employee.action.EmployeeAction" scope="prototype">
+		<property name="employeeServ" ref="employeeServ"/>
+	</bean>
+</beans>	
+	

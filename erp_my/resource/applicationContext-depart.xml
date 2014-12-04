@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:aop="http://www.springframework.org/schema/aop" xmlns:tx="http://www.springframework.org/schema/tx"
+	xmlns:jee="http://www.springframework.org/schema/jee"
+	xsi:schemaLocation="
+		http://www.springframework.org/schema/beans 
+		http://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/context 
+		http://www.springframework.org/schema/context/spring-context.xsd
+		http://www.springframework.org/schema/tx 
+		http://www.springframework.org/schema/tx/spring-tx.xsd
+		http://www.springframework.org/schema/aop 
+		http://www.springframework.org/schema/aop/spring-aop.xsd
+		http://www.springframework.org/schema/jee 
+		http://www.springframework.org/schema/jee/spring-jee-3.2.xsd
+		">  
+	<!-- 配置dao层 -->
+	<bean id="departmentDao" class="org.erp.auth.department.dao.impl.DepartmentDaoImpl">
+		<property name="hibernateTemp" ref="hibernateTemplate"/>
+	</bean>
+	
+	<!-- 配置service层 -->
+	<bean id="departmentServ" class="org.erp.auth.department.service.impl.DepartmentServiceImpl">
+		<property name="departmentDao" ref="departmentDao"/>
+	</bean>
+	
+	<!-- 配置Action层 -->
+	<bean id="departmentAction" class="org.erp.auth.department.action.DepartmentAction" scope="prototype">
+		<property name="departmentServ" ref="departmentServ"/>
+	</bean>
+</beans>	
+	

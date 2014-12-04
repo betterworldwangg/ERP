@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+	"-//Apache Software Foundation//DTD Struts Configuration 2.3//EN"
+	"http://struts.apache.org/dtds/struts-2.3.dtd">
+
+<struts>
+    <constant name="struts.devMode" value="true" />
+    <constant name="struts.ui.theme" value="simple" />
+    <constant name="struts.custom.i18n.resources" value="mess"/>
+    
+    <package name="default" namespace="/" extends="struts-default">
+    	<interceptors>
+    		 <interceptor name="loginInter" class="org.erp.util.interceptor.EmployLoginInterceptor"/>
+    		 <interceptor name="exceptionInter" class="org.erp.util.interceptor.ExceptionInterceptor"/>
+    		 <interceptor-stack name="systemStack">
+    		 	<interceptor-ref name="exceptionInter"/>
+    		 	<interceptor-ref name="loginInter"/>
+    		 	<interceptor-ref name="defaultStack"/>
+    		 </interceptor-stack>
+    	</interceptors>
+    	<default-interceptor-ref name="systemStack"/>
+    	<global-results>
+    		<result name="loginFail">/WEB-INF/jsps/login.jsp</result>
+    		<result name="error">/WEB-INF/jsps/error.jsp</result>
+    		<result name="list">/WEB-INF/jsps/${actionName}/list.jsp</result>
+    		<result name="inputUI">/WEB-INF/jsps/${actionName}/input.jsp</result>
+    		<result name="toList" type="redirectAction">/${actionName}_list</result>
+    	</global-results>
+    	<action name="page_*">
+    		<result>/WEB-INF/jsps/{1}.jsp</result>
+    	</action>
+    	<!-- 员工 -->
+    	<action name="emp_*" class="employeeAction" method="{1}">
+    		<result name="loginSucc">/WEB-INF/jsps/main.jsp</result>
+    		<result name="loginFail">/WEB-INF/jsps/login.jsp</result>
+    	</action>
+    	<!-- 部门 -->
+    	<action name="department_*" class="departmentAction" method="{1}">
+    		
+    	</action>
+    </package>
+</struts>
