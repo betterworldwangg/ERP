@@ -15,10 +15,11 @@ public class DepartmentServiceImpl implements DepartmentService {
 			int pageSize) {
 		return departmentDao.findAll(dhq,currPage,pageSize);
 	}
-	public DepartmentDao getdepartmentDao() {
+	
+	public DepartmentDao getDepartmentDao() {
 		return departmentDao;
 	}
-	public void setdepartmentDao(DepartmentDao departmentDao) {
+	public void setDepartmentDao(DepartmentDao departmentDao) {
 		this.departmentDao = departmentDao;
 	}
 	@Override
@@ -44,6 +45,11 @@ public class DepartmentServiceImpl implements DepartmentService {
 	@Override
 	public void delete(DepartmentModel entity) {
 		departmentDao.delete(entity);
+	}
+
+	@Override
+	public List<DepartmentModel> findAll() {
+		return departmentDao.findAll();
 	}
 	
 }

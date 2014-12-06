@@ -30,7 +30,7 @@
     		<result>/WEB-INF/jsps/{1}.jsp</result>
     	</action>
     	<!-- 员工 -->
-    	<action name="emp_*" class="employeeAction" method="{1}">
+    	<action name="employee_*" class="employeeAction" method="{1}">
     		<result name="loginSucc">/WEB-INF/jsps/main.jsp</result>
     		<result name="loginFail">/WEB-INF/jsps/login.jsp</result>
     	</action>

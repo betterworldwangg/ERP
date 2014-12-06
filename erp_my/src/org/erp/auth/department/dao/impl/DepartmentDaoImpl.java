@@ -21,6 +21,7 @@ public class DepartmentDaoImpl extends BaseDaoImpl<DepartmentModel> implements D
 		{
 			dct.add(Restrictions.like("phone", dhm.getPhone()+"%"));
 		}
+
 	}
 
 }

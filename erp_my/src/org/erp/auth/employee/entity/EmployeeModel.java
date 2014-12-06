@@ -1,7 +1,28 @@
 package org.erp.auth.employee.entity;
+
+import java.text.Format;
+import java.util.HashMap;
+import java.util.Map;
+
+import org.erp.auth.department.entity.DepartmentModel;
+import org.erp.util.FormatTime;
+
 public class EmployeeModel 
 {
+	public static final String EMP_MAN_VIEW="男";
+	public static final String EMP_WOMEN_VIEW="女";
+			
+	public static final Integer EMP_MAN=0;
+	public static final Integer EMP_WOMEN=1;
 	
+	public static final Map<Integer,String> sexMap = new HashMap<Integer, String>();
+	
+	static{
+		sexMap.put(EMP_MAN, EMP_MAN_VIEW);
+		sexMap.put(EMP_WOMEN, EMP_WOMEN_VIEW);
+	}
+			
+			
 	private Long uuid;
 	//用户名
 	private String userName;
@@ -12,6 +33,7 @@ public class EmployeeModel
 	private Long birthday;
 	private String phone;
 	private String email;
+	private String addres;
 	//最后登录时间
 	private Long lastLoginTime;
 	//最后登录IP地址
@@ -24,7 +46,7 @@ public class EmployeeModel
 	private String birthDayView;
 	private String lastLoginTimeView;
 	//关联关系
-	//private DepartModel departM;
+	private DepartmentModel departM;
 	
 	
 	public Long getUuid() {
@@ -56,12 +78,14 @@ public class EmployeeModel
 	}
 	public void setSex(Integer sex) {
 		this.sex = sex;
+		this.sexView = sexMap.get(sex);
 	}
 	public Long getBirthday() {
 		return birthday;
 	}
 	public void setBirthday(Long birthday) {
 		this.birthday = birthday;
+		//this.birthDayView = FormatTime.formatTime(birthday);
 	}
 	public String getPhone() {
 		return phone;
@@ -81,6 +105,7 @@ public class EmployeeModel
 	}
 	public void setLastLoginTime(Long lastLoginTime) {
 		this.lastLoginTime = lastLoginTime;
+		//this.lastLoginTimeView = FormatTime.formatTime(lastLoginTime);
 	}
 	public String getLastLoginIp() {
 		return lastLoginIp;
@@ -112,12 +137,19 @@ public class EmployeeModel
 	public void setLastLoginTimeView(String lastLoginTimeView) {
 		this.lastLoginTimeView = lastLoginTimeView;
 	}
-//	public DepartModel getDepartM() {
-//		return departM;
-//	}
-//	public void setDepartM(DepartModel departM) {
-//		this.departM = departM;
-//	}
+	public DepartmentModel getDepartM() {
+		return departM;
+	}
+	public void setDepartM(DepartmentModel departM) {
+		this.departM = departM;
+	}
+	public String getAddres() {
+		return addres;
+	}
+	public void setAddres(String addres) {
+		this.addres = addres;
+	}
+	
 	
 	
 	

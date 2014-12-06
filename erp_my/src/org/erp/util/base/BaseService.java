@@ -7,6 +7,8 @@ import org.springframework.transaction.annotation.Transactional;
 public interface BaseService<T> {
 	List<T> findAll(BaseModel dhq, int currPage, int pageSize);
 
+	List<T> findAll();
+	
 	int rowCount(BaseModel dhq);
 
 	void save(T model);

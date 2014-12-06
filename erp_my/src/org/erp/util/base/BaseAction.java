@@ -8,6 +8,7 @@ import java.util.List;
 import org.erp.auth.department.service.service.DepartmentService;
 import org.erp.auth.employee.service.service.EmployeeService;
 
+import com.opensymphony.xwork2.ActionContext;
 import com.opensymphony.xwork2.ActionSupport;
 
 public class BaseAction<T> extends ActionSupport{
@@ -40,6 +41,18 @@ public class BaseAction<T> extends ActionSupport{
 		} catch (IllegalAccessException e) {
 			e.printStackTrace();
 		}
+	}
+	public void putSession(String name , Object obj)
+	{
+		ActionContext.getContext().getSession().put(name,obj);
+	}
+	public void put(String name , Object obj)
+	{
+		ActionContext.getContext().put(name, obj);
+	}
+	public Object getSession(String name)
+	{
+		return ActionContext.getContext().getSession().get(name);
 	}
 	public String getActionName(){
 		String allName = getClass().getSimpleName();

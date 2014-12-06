@@ -3,12 +3,13 @@
         '-//Hibernate/Hibernate Mapping DTD 3.0//EN'
         'http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd'>
 <hibernate-mapping>
-	<class name="org.erp.auth.department.entity.DepartmentModel" table="department">
-		<id name="uuid">
-			<generator class="native"/>
-		</id>
-		<property name="name"/>
-		<property name="phone"/>
-		<property name="departNum"/>
-	</class>
+<class name="org.erp.auth.department.entity.DepartmentModel" table="department">
+	<id name="uuid">
+		<generator class="native"/>
+	</id>
+	<property name="name"/>
+	<property name="phone"/>
+	<property name="departNum"/>
+</class>
 </hibernate-mapping>
+
