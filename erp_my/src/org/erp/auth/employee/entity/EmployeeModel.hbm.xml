@@ -19,5 +19,9 @@
 	<property name="loginTimes"/>
 	<property name="addres"/>
 	<many-to-one name="departM" class="org.erp.auth.department.entity.DepartmentModel" column="departM"/>
+	<set name="roles" table="employee_role">
+		<key column="employee_uuid"/>
+		<many-to-many class="org.erp.auth.role.entity.RoleModel" column="role_uuid"/>
+	</set>
 </class>
 </hibernate-mapping>

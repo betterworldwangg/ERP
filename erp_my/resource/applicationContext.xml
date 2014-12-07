@@ -38,6 +38,8 @@
 			<list>
 				 <value>classpath:/org/erp/auth/employee/entity</value>
 				 <value>classpath:/org/erp/auth/department/entity</value>
+				 <value>classpath:/org/erp/auth/role/entity</value>
+				 <value>classpath:/org/erp/auth/resource/entity</value>
 			</list>
 		</property>
 	</bean>

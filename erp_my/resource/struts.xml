@@ -33,10 +33,19 @@
     	<action name="employee_*" class="employeeAction" method="{1}">
     		<result name="loginSucc">/WEB-INF/jsps/main.jsp</result>
     		<result name="loginFail">/WEB-INF/jsps/login.jsp</result>
+    		<result name="toChangePwd">/WEB-INF/jsps/employee/changePwd.jsp</result>
     	</action>
     	<!-- 部门 -->
     	<action name="department_*" class="departmentAction" method="{1}">
     		
+    	</action>
+    	<!-- 角色 -->
+    	<action name="role_*" class="roleAction" method="{1}">
+    		
+    	</action>
+    	<!-- 资源 -->
+    	<action name="resource_*" class="resourceAction" method="{1}">
+    	
     	</action>
     </package>
 </struts>

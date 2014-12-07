@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+        '-//Hibernate/Hibernate Mapping DTD 3.0//EN'
+        'http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd'>
+<hibernate-mapping>
+<class name="org.erp.auth.role.entity.RoleModel" table="role">
+	<id name="uuid">
+		<generator class="native"/>
+	</id>
+	<property name="name"/>
+	<property name="number"/>
+	<set name="employees" table="employee_role">
+		<key column="role_uuid"/>
+		<many-to-many class="org.erp.auth.employee.entity.EmployeeModel" column="employee_id"/>
+	</set>
+	<set name="resources" table="role_resource">
+		<key column="role_uuid"/>
+		<many-to-many class="org.erp.auth.resource.entity.ResourceModel" column="resource_uuid"/>
+	</set>
+</class>
+</hibernate-mapping>

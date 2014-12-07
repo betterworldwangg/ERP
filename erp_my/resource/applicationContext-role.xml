@@ -9,20 +9,19 @@
 		http://www.springframework.org/schema/context/spring-context.xsd
 		">  
 	<!-- 配置dao层 -->
-	<bean id="employeeDao" class="org.erp.auth.employee.dao.impl.EmployeeDaoImpl">
+	<bean id="roleDao" class="org.erp.auth.role.dao.impl.RoleDaoImpl">
 		<property name="hibernateTemp" ref="hibernateTemplate"/>
 	</bean>
 
 	<!-- 配置service层 -->
-	<bean id="employeeServ" class="org.erp.auth.employee.service.impl.EmployeeServiceImpl">
-		<property name="employeeDao" ref="employeeDao"/>
+	<bean id="roleServ" class="org.erp.auth.role.service.impl.RoleServiceImpl">
 		<property name="roleDao" ref="roleDao"/>
+		<property name="resourceDao" ref="resourceDao"/>
 	</bean>
 
 	<!-- 配置Action层 -->
-	<bean id="employeeAction" class="org.erp.auth.employee.action.EmployeeAction" scope="prototype">
-		<property name="employeeServ" ref="employeeServ"/>
-		<property name="departmentServ" ref="departmentServ"/>
+	<bean id="roleAction" class="org.erp.auth.role.action.RoleAction" scope="prototype">
 		<property name="roleServ" ref="roleServ"/>
+		<property name="resourceServ" ref="resourceServ"/>
 	</bean>
 </beans>

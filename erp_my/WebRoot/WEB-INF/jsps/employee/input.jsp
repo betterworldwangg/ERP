@@ -4,16 +4,31 @@
 <script type="text/javascript" src="js/jquery-1.8.3.js"></script>
 <script type="text/javascript" src="js/Calendar.js"></script>
 <script type="text/javascript">
-	$(function() {
-		$("#all").click(function() {
-			$("[name=roles]:checkbox").attr("checked",$("#all").attr("checked")=="checked");
+	$(function(){
+		$("#all").click(function(){
+			$("[name=roleUuids]").attr("checked",$("#all").attr("checked")=="checked");
 		});
-		$("#reverse").click(function() {
-			$("[name=roles]:checkbox").each(function () {
-                $(this).attr("checked", !$(this).attr("checked"));
-            });
-
+		$("#reverse").click(function(){
+			$("[name=roleUuids]").each(function(){
+				$(this).attr("checked", !$(this).attr("checked"));
+			});
+			checkStatus();
 		});
+		
+		$("[name=roleUuids]").click(function(){
+			checkStatus();
+		});
+		function checkStatus(){
+			//全选按钮的状态应该是所有组件的状态的综合结果，都是选中，全选是选中，否则全选是不选中
+			var f = true;
+			$("[name=roleUuids]").each(function(){
+				var flag = $(this).attr("checked")=="checked";
+				//&表示位运算，&&表示逻辑与运算
+				//js是弱类型语言
+				f = f && flag;
+			});
+			$("#all").attr("checked",f);
+		}
 	});
 </script>
 <div class="content-right">
@@ -49,7 +64,7 @@
 				    <tr  bgcolor="#FFFFFF">
 				      <td align="center">密&nbsp;&nbsp;&nbsp;&nbsp;码</td>
 				      <td>
-				      	<s:password name="userPass" size="25"/>
+				      	<input name="model.userPass" type="text" size="25"/>
 				      </td>
 				      <td  align="center">确认密码</td>
 				      <td >
@@ -118,16 +133,8 @@
 				    </tr>
 				    <tr  bgcolor="#FFFFFF">
 				      <td width="18%" height="30" align="center">&nbsp;</td>
-				      <td width="82%" colspan="3">
-				      	<input type="checkbox">经理
-				      	<input type="checkbox">主管
-				      	<input type="checkbox">员工
-				      	<input type="checkbox">经理
-				      	<input type="checkbox">主管
-				      	<input type="checkbox">员工
-				      	<input type="checkbox">经理
-				      	<input type="checkbox">主管
-				      	<input type="checkbox">员工
+				      <td width="82%" colspan="3" id="rol">
+				      	<s:checkboxlist name="roleUuids" list="roles" listKey="uuid" listValue="name"></s:checkboxlist>
 				      </td>
 				    </tr>
 				    <tr  bgcolor="#FFFFFF">

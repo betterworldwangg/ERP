@@ -46,17 +46,23 @@ public class EmployeeDaoImpl extends BaseDaoImpl<EmployeeModel> implements Emplo
 		}
 		if(ehm.getLoginTimeFirst() != null)
 		{
-			dct.add(Restrictions.ge("birthday", ehm.getLoginTimeFirst()));
+			dct.add(Restrictions.ge("loginTimeFirst", ehm.getLoginTimeFirst()));
 		}
 		if(ehm.getLoginTimeEnd() !=null)
 		{
-			dct.add(Restrictions.le("birthday", ehm.getLoginTimeEnd()));
+			dct.add(Restrictions.le("loginTimeEnd", ehm.getLoginTimeEnd()));
 		}
 		if(ehm.getDepartM()!=null && ehm.getDepartM().getUuid() != null && ehm.getDepartM().getUuid() != -1)
 		{
-			dct.add(Restrictions.le("departM", ehm.getDepartM().getUuid()));
+			dct.add(Restrictions.eq("departM", ehm.getDepartM()));
 		}
 		
 		
+	}
+
+	@Override
+	public Boolean changePass(String userName, String userPass, String newPass) {
+		String hql = "update EmployeeModel e set e.userPass=? where userName=? and userPass= ?";
+		return hibernateTemp.bulkUpdate(hql, newPass,userName,userPass)>0 ? true : false;
 	}
 }

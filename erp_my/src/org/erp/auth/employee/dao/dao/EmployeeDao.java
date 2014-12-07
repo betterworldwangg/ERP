@@ -6,4 +6,6 @@ public interface EmployeeDao extends BaseDao<EmployeeModel>
 {
 	EmployeeModel findByNameAndPass(String userName, String userPass);
 
+	Boolean changePass(String userName, String userPass, String newPas);
+
 }

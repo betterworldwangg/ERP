@@ -7,5 +7,11 @@ import org.springframework.transaction.annotation.Transactional;
 public interface EmployeeService extends BaseService<EmployeeModel> 
 {
 	EmployeeModel findByNameAndPass(String userName, String userPass);
+	
+	void save(EmployeeModel model, Long[] roleUuids);
+
+	void update(EmployeeModel model, Long[] roleUuids);
+
+	Boolean changePass(String userName, String userPass, String newPass);
 
 }

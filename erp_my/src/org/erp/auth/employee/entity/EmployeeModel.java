@@ -2,9 +2,12 @@ package org.erp.auth.employee.entity;
 
 import java.text.Format;
 import java.util.HashMap;
+import java.util.HashSet;
 import java.util.Map;
+import java.util.Set;
 
 import org.erp.auth.department.entity.DepartmentModel;
+import org.erp.auth.role.entity.RoleModel;
 import org.erp.util.FormatTime;
 
 public class EmployeeModel 
@@ -47,6 +50,7 @@ public class EmployeeModel
 	private String lastLoginTimeView;
 	//关联关系
 	private DepartmentModel departM;
+	private Set<RoleModel> roles = new HashSet<RoleModel>();
 	
 	
 	public Long getUuid() {
@@ -85,7 +89,7 @@ public class EmployeeModel
 	}
 	public void setBirthday(Long birthday) {
 		this.birthday = birthday;
-		//this.birthDayView = FormatTime.formatTime(birthday);
+		this.birthDayView = FormatTime.formatTime(birthday);
 	}
 	public String getPhone() {
 		return phone;
@@ -148,6 +152,12 @@ public class EmployeeModel
 	}
 	public void setAddres(String addres) {
 		this.addres = addres;
+	}
+	public Set<RoleModel> getRoles() {
+		return roles;
+	}
+	public void setRoles(Set<RoleModel> roles) {
+		this.roles = roles;
 	}
 	
 	

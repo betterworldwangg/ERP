@@ -19,12 +19,12 @@
 				<table width="100%" border="0" cellpadding="0" cellspacing="0">
 					<tr>
 						<td width="32%">
-							<a href="employee/changePwd.jsp" target="main">
+							<a href="employee_changePwd" target="main">
 								<img src="images/head-l.gif"	border="0" />
 							</a>
 						</td>
 						<td width="26%">
-							<a href="index2.jsp">
+							<a href="employee_logout">
 								<img src="images/head-m.gif"	border="0" />
 							</a>
 						</td>
@@ -128,10 +128,10 @@
 								<td><a class="hei" target="main" href="employee_list">&nbsp;&nbsp;&nbsp;&nbsp;员工维护</a></td>
 							</tr>
 							<tr>
-								<td><a class="hei" target="main" href="role/list.jsp">&nbsp;&nbsp;&nbsp;&nbsp;角色维护</a></td>
+								<td><a class="hei" target="main" href="role_list">&nbsp;&nbsp;&nbsp;&nbsp;角色维护</a></td>
 							</tr>
 							<tr>
-								<td><a class="hei" target="main" href="resource/list.jsp">&nbsp;&nbsp;&nbsp;&nbsp;资源维护</a></td>
+								<td><a class="hei" target="main" href="resource_list">&nbsp;&nbsp;&nbsp;&nbsp;资源维护</a></td>
 							</tr>
 							<tr>
 								<td><a class="hei" target="main" href="menu/list.jsp">&nbsp;&nbsp;&nbsp;&nbsp;菜单维护</a></td>

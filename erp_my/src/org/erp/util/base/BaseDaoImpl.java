@@ -64,6 +64,7 @@ public abstract class BaseDaoImpl<T> implements BaseDao<T> {
 		return hibernateTemp.findByCriteria(dct);
 	}
 
+	@SuppressWarnings("unchecked")
 	@Override
 	public List<T> findAll(BaseModel dhq, int currPage, int pageSize) {
 		DetachedCriteria dct = DetachedCriteria.forClass(clazz);
@@ -73,12 +74,14 @@ public abstract class BaseDaoImpl<T> implements BaseDao<T> {
 	@Override
 	public int rowCount(BaseModel dhq) {
 		DetachedCriteria dct = DetachedCriteria.forClass(clazz);
-		highQuery(dhq, dct);
 		dct.setProjection(Projections.rowCount());
-		List<Long> counts = hibernateTemp.findByCriteria(dct);	
+		highQuery(dhq, dct);
+		List<Long> counts = hibernateTemp.findByCriteria(dct);
+		
 		return counts.get(0).intValue();
 	}
 	@Override
 	public abstract void highQuery(BaseModel dhq,DetachedCriteria dct);
 	
+
 }

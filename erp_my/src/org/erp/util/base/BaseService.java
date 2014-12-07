@@ -12,10 +12,14 @@ public interface BaseService<T> {
 	int rowCount(BaseModel dhq);
 
 	void save(T model);
+	
+	void save(T model,Long[] uuids);
 
 	public T findById(Long uuid);
 
 	void update(T model);
+	
+	void update(T model,Long[] uuids);
 
 	void delete(T entity);
 

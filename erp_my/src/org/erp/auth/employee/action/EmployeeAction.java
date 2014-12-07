@@ -5,10 +5,13 @@ import java.util.List;
 import org.erp.auth.department.entity.DepartmentModel;
 import org.erp.auth.employee.entity.EmployeeModel;
 import org.erp.auth.employee.entity.EmployeeQueryModel;
+import org.erp.auth.role.entity.RoleModel;
 import org.erp.util.base.BaseAction;
 
 public class EmployeeAction extends BaseAction<EmployeeModel> {
 	public EmployeeQueryModel ehq = new EmployeeQueryModel();
+	public String newPass;
+	public Long[] roleUuids;
 	public String login()
 	{
 		EmployeeModel empMode = employeeServ.findByNameAndPass(model.getUserName(),model.getUserPass());
@@ -36,11 +39,11 @@ public class EmployeeAction extends BaseAction<EmployeeModel> {
 	{
 		if(model.getUuid() == null)
 		{
-			employeeServ.save(model);
+			employeeServ.save(model,roleUuids);
 		}
 		else
 		{
-			employeeServ.update(model);
+			employeeServ.update(model,roleUuids);
 		}
 		return TO_LIST;
 	}
@@ -49,8 +52,16 @@ public class EmployeeAction extends BaseAction<EmployeeModel> {
 		if(model.getUuid() != null)
 		{
 			model = employeeServ.findById(model.getUuid());
+			roleUuids = new Long[model.getRoles().size()];
+			int i = 0;
+			for(RoleModel rm : model.getRoles())
+			{
+				roleUuids[i++] = rm.getUuid();
+			}
 		}
 		List<DepartmentModel> depts = departmentServ.findAll();
+		List<RoleModel> roles = roleServ.findAll();
+		put("roles",roles);
 		put("depts", depts);
 		return INPUTUI;
 	}
@@ -58,5 +69,28 @@ public class EmployeeAction extends BaseAction<EmployeeModel> {
 	{
 		employeeServ.delete(model);
 		return TO_LIST;
+	}
+	public String logout()
+	{
+		putSession("userName", null);
+		return "loginFail";
+	}
+	public String changePwd()
+	{
+		return "toChangePwd";
+	}
+	public String changePass()
+	{
+		EmployeeModel em = (EmployeeModel) getSession("userName");
+		Boolean flag = employeeServ.changePass(em.getUserName(),model.getUserPass(),newPass);
+		if(flag)
+		{
+			return "loginFail";
+		}
+		else
+		{
+			addActionError("用户名或密码错误");
+			return "toChangePwd";
+		}
 	}
 }

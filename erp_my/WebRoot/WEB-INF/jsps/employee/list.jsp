@@ -39,7 +39,7 @@
 						<td><s:textfield name="ehq.phone" size="14"/></td>
 						<td>性&nbsp;&nbsp;&nbsp;&nbsp;别</td>
 						<td>
-							 <s:select name="ehq.sex" list="@org.erp.auth.employee.entity.EmployeeModel@sexMap"></s:select>
+							 <s:select name="ehq.sex" list="@org.erp.auth.employee.entity.EmployeeModel@sexMap" headerKey="-1" headerValue="----请-选-择----"></s:select>
 						</td>
 							
 						<td width="70"><a href="employee_input"> <img src="images/can_b_02.gif" border="0" /> </a></td>
@@ -59,7 +59,7 @@
 						</td>
 						<td>部门名称</td>
 						<td>
-							<s:select list="depts" name="model.departM.uuid" listKey="uuid" listValue="name"
+							<s:select list="depts" name="ehq.departM.uuid" listKey="uuid" listValue="name"
 								headerKey="-1" headerValue="----请-选-择----">
 				      		</s:select>
 							<%-- <select class="kuan">

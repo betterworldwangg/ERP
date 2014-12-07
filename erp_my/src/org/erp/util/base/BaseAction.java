@@ -7,6 +7,9 @@ import java.util.List;
 
 import org.erp.auth.department.service.service.DepartmentService;
 import org.erp.auth.employee.service.service.EmployeeService;
+import org.erp.auth.resource.entity.ResourceModel;
+import org.erp.auth.resource.service.service.ResourceService;
+import org.erp.auth.role.service.service.RoleService;
 
 import com.opensymphony.xwork2.ActionContext;
 import com.opensymphony.xwork2.ActionSupport;
@@ -23,6 +26,8 @@ public class BaseAction<T> extends ActionSupport{
 	public int rows;
 	protected EmployeeService employeeServ;
 	protected DepartmentService departmentServ;
+	protected RoleService roleServ;
+	protected ResourceService resourceServ;
 	public List<T> list = new ArrayList<T>();
 	public T model;
 	public BaseAction() {
@@ -72,6 +77,18 @@ public class BaseAction<T> extends ActionSupport{
 	}
 	public void setDepartmentServ(DepartmentService departmentServ) {
 		this.departmentServ = departmentServ;
+	}
+	public RoleService getRoleServ() {
+		return roleServ;
+	}
+	public void setRoleServ(RoleService roleServ) {
+		this.roleServ = roleServ;
+	}
+	public ResourceService getResourceServ() {
+		return resourceServ;
+	}
+	public void setResourceServ(ResourceService resourceServ) {
+		this.resourceServ = resourceServ;
 	}
 	
 }
