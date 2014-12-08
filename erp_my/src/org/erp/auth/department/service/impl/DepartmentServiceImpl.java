@@ -52,13 +52,13 @@ public class DepartmentServiceImpl implements DepartmentService {
 		return departmentDao.findAll();
 	}
 
-	@Override
+	
 	public void save(DepartmentModel model, Long[] uuids) {
 		// TODO Auto-generated method stub
 		
 	}
 
-	@Override
+	
 	public void update(DepartmentModel model, Long[] uuids) {
 		// TODO Auto-generated method stub
 		

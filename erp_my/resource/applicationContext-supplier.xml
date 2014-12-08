@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xsi:schemaLocation="
+		http://www.springframework.org/schema/beans 
+		http://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/context 
+		http://www.springframework.org/schema/context/spring-context.xsd
+		">  
+	<!-- 配置dao层 -->
+	<bean id="supplierDao" class="org.erp.invoice.supplier.dao.impl.SupplierDaoImpl">
+		<property name="hibernateTemp" ref="hibernateTemplate"/>
+	</bean>
+
+	<!-- 配置service层 -->
+	<bean id="supplierServ" class="org.erp.invoice.supplier.service.impl.SupplierServiceImpl">
+		<property name="supplierDao" ref="supplierDao"/>
+	</bean>
+
+	<!-- 配置Action层 -->
+	<bean id="supplierAction" class="org.erp.invoice.supplier.action.SupplierAction" scope="prototype">
+		<property name="supplierServ" ref="supplierServ"/>
+	</bean>
+</beans>

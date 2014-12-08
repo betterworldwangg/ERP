@@ -50,10 +50,10 @@
 								<td><a class="hei" target="main" href="#">商品管理</a></td>
 							</tr>
 							<tr>
-								<td><a class="hei" target="main" href="supplier/list.jsp">&nbsp;&nbsp;&nbsp;&nbsp;供应商</a></td>
+								<td><a class="hei" target="main" href="supplier_list">&nbsp;&nbsp;&nbsp;&nbsp;供应商</a></td>
 							</tr>
 							<tr>
-								<td><a class="hei" target="main" href="goodstype/list.jsp">&nbsp;&nbsp;&nbsp;&nbsp;商品类别</a></td>
+								<td><a class="hei" target="main" href="goodsType_list">&nbsp;&nbsp;&nbsp;&nbsp;商品类别</a></td>
 							</tr>
 							<tr>
 								<td><a class="hei" target="main" href="goods/list.jsp">&nbsp;&nbsp;&nbsp;&nbsp;商品</a></td>
@@ -134,7 +134,7 @@
 								<td><a class="hei" target="main" href="resource_list">&nbsp;&nbsp;&nbsp;&nbsp;资源维护</a></td>
 							</tr>
 							<tr>
-								<td><a class="hei" target="main" href="menu/list.jsp">&nbsp;&nbsp;&nbsp;&nbsp;菜单维护</a></td>
+								<td><a class="hei" target="main" href="menu_list">&nbsp;&nbsp;&nbsp;&nbsp;菜单维护</a></td>
 							</tr>
 							<tr>
 								<td><a class="hei" target="main" href="store/list.jsp">&nbsp;&nbsp;&nbsp;&nbsp;仓库管理</a></td>

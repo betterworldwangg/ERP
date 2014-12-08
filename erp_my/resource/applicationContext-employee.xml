@@ -24,5 +24,6 @@
 		<property name="employeeServ" ref="employeeServ"/>
 		<property name="departmentServ" ref="departmentServ"/>
 		<property name="roleServ" ref="roleServ"/>
+		<property name="resourceServ" ref="resourceServ"/>
 	</bean>
 </beans>

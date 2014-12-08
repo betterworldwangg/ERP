@@ -2,9 +2,12 @@ package org.erp.auth.employee.action;
 
 import java.util.List;
 
+import javax.servlet.http.HttpServletRequest;
+
 import org.erp.auth.department.entity.DepartmentModel;
 import org.erp.auth.employee.entity.EmployeeModel;
 import org.erp.auth.employee.entity.EmployeeQueryModel;
+import org.erp.auth.resource.entity.ResourceModel;
 import org.erp.auth.role.entity.RoleModel;
 import org.erp.util.base.BaseAction;
 
@@ -14,10 +17,32 @@ public class EmployeeAction extends BaseAction<EmployeeModel> {
 	public Long[] roleUuids;
 	public String login()
 	{
-		EmployeeModel empMode = employeeServ.findByNameAndPass(model.getUserName(),model.getUserPass());
+		HttpServletRequest request = getRequest();
+		String loginIp = request.getHeader("x-forwarded-for"); 
+		if(loginIp == null || loginIp.length() == 0 || "unknown".equalsIgnoreCase(loginIp)) { 
+			loginIp = request.getHeader("Proxy-Client-IP"); 
+		} 
+		if(loginIp == null || loginIp.length() == 0 || "unknown".equalsIgnoreCase(loginIp)) { 
+			loginIp = request.getHeader("WL-Proxy-Client-IP"); 
+		} 
+		if(loginIp == null || loginIp.length() == 0 || "unknown".equalsIgnoreCase(loginIp)) { 
+			loginIp = request.getRemoteAddr(); 
+		}
+		
+		EmployeeModel empMode = employeeServ.login(model.getUserName(),model.getUserPass(),loginIp);
 		if(empMode != null)
 		{
+			List<ResourceModel> resourcs = resourceServ.findByEmpId(empMode.getUuid());
+			
+			StringBuilder sb = new StringBuilder();
+			
+			for (ResourceModel resourceModel : resourcs) {
+				sb.append(resourceModel.getUrl());
+				sb.append("-");
+			}
+			empMode.setResourceView(sb.toString());
 			putSession("userName", empMode);
+			
 			return "loginSucc";
 		}
 		this.addActionError("用户名或密码错误");

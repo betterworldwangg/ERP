@@ -40,6 +40,9 @@
 				 <value>classpath:/org/erp/auth/department/entity</value>
 				 <value>classpath:/org/erp/auth/role/entity</value>
 				 <value>classpath:/org/erp/auth/resource/entity</value>
+				 <value>classpath:/org/erp/auth/menu/entity</value>
+				 <value>classpath:/org/erp/invoice/supplier/entity</value>
+				 <value>classpath:/org/erp/invoice/goodstype/entity</value>
 			</list>
 		</property>
 	</bean>

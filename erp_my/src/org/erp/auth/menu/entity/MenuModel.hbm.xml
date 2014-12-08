@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+        '-//Hibernate/Hibernate Mapping DTD 3.0//EN'
+        'http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd'>
+<hibernate-mapping>
+<class name="org.erp.auth.menu.entity.MenuModel" table="menu">
+	<id name="uuid">
+		<generator class="native"/>
+	</id>
+	<property name="name"/>
+	<property name="url"/>
+	<!-- 配置与父菜单关联关系 -->
+	<many-to-one name="parent" class="org.erp.auth.menu.entity.MenuModel" column="parent_uuid"/>
+	<!-- 配置与子菜单关联关系 -->
+	<set name="submenus">
+		<key column="parent_uuid"/>
+		<one-to-many class="org.erp.auth.menu.entity.MenuModel"/>
+	</set>
+	<!-- 配置与 -->
+</class>
+</hibernate-mapping>

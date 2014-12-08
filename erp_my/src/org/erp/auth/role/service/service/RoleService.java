@@ -7,4 +7,8 @@ import org.springframework.transaction.annotation.Transactional;
 public interface RoleService extends BaseService<RoleModel> 
 {
 
+	void save(RoleModel model, Long[] resourUuids, Long[] menuUuids);
+
+	void update(RoleModel model, Long[] resourUuids, Long[] menuUuids);
+
 }

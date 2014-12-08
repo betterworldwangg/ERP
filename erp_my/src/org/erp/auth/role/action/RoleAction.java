@@ -3,6 +3,7 @@ package org.erp.auth.role.action;
 import java.util.List;
 import java.util.Set;
 
+import org.erp.auth.menu.entity.MenuModel;
 import org.erp.auth.resource.entity.ResourceModel;
 import org.erp.auth.role.entity.RoleModel;
 import org.erp.auth.role.entity.RoleQueryModel;
@@ -11,6 +12,7 @@ import org.erp.util.base.BaseAction;
 public class RoleAction extends BaseAction<RoleModel> {
 	public RoleQueryModel rhq = new RoleQueryModel();
 	public Long[] resourUuids;
+	public Long[] menuUuids;
 	public String list()
 	{
 		list = roleServ.findAll(rhq, currPage, pageSize);
@@ -22,16 +24,17 @@ public class RoleAction extends BaseAction<RoleModel> {
 	{
 		if(model.getUuid() == null)
 		{
-			roleServ.save(model,resourUuids);
+			roleServ.save(model,resourUuids,menuUuids);
 		}
 		else
 		{
-			roleServ.update(model,resourUuids);
+			roleServ.update(model,resourUuids,menuUuids);
 		}
 		return TO_LIST;
 	}
 	public String input()
 	{
+		
 		if(model.getUuid() != null)
 		{
 			model = roleServ.findById(model.getUuid());
@@ -42,7 +45,16 @@ public class RoleAction extends BaseAction<RoleModel> {
 			{
 				resourUuids[i++] = rm.getUuid();
 			}
+			Set<MenuModel> mms = model.getMenus();
+			menuUuids = new Long[mms.size()];
+			i = 0;
+			for (MenuModel mm : mms) {
+				menuUuids[i++] = mm.getUuid();
+			}
+			
 		}
+		List<MenuModel> menuList = menuServ.findAll();
+		put("menuList", menuList);
 		List<ResourceModel> res = resourceServ.findAll();
 		put("resources", res);
 		

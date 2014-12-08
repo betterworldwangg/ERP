@@ -12,10 +12,13 @@
     	<interceptors>
     		 <interceptor name="loginInter" class="org.erp.util.interceptor.EmployLoginInterceptor"/>
     		 <interceptor name="exceptionInter" class="org.erp.util.interceptor.ExceptionInterceptor"/>
+    		 <interceptor name="authorityInter" class="org.erp.util.interceptor.AuthorityInterceptor"/>
     		 <interceptor-stack name="systemStack">
     		 	<interceptor-ref name="exceptionInter"/>
     		 	<interceptor-ref name="loginInter"/>
+    		 	<interceptor-ref name="authorityInter"/>
     		 	<interceptor-ref name="defaultStack"/>
+    		 	
     		 </interceptor-stack>
     	</interceptors>
     	<default-interceptor-ref name="systemStack"/>
@@ -45,6 +48,18 @@
     	</action>
     	<!-- 资源 -->
     	<action name="resource_*" class="resourceAction" method="{1}">
+    	
+    	</action>
+    	<!-- 菜单 -->
+    	<action name="menu_*" class="menuAction" method="{1}">
+    		
+    	</action>
+    	<!-- 供应商 -->
+    	<action name="supplier_*" class="supplierAction" method="{1}">
+    	
+    	</action>
+    	<!-- 商品类别 -->
+    	<action name="goodsType_*" class="goodsTypeAction" method="{1}">
     	
     	</action>
     </package>

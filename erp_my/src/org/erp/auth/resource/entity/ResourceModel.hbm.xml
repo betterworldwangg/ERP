@@ -9,5 +9,9 @@
 	</id>
 	<property name="name"/>
 	<property name="url"/>
+	<set name="roles" table="role_resource">
+		<key column="resource_uuid"/>
+		<many-to-many class="org.erp.auth.role.entity.RoleModel" column="role_uuid"/>
+	</set>
 </class>
 </hibernate-mapping>

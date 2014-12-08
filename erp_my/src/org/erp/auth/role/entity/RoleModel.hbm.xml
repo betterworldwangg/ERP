@@ -9,13 +9,20 @@
 	</id>
 	<property name="name"/>
 	<property name="number"/>
+	<!-- 与员工多对多 -->
 	<set name="employees" table="employee_role">
 		<key column="role_uuid"/>
-		<many-to-many class="org.erp.auth.employee.entity.EmployeeModel" column="employee_id"/>
+		<many-to-many class="org.erp.auth.employee.entity.EmployeeModel" column="employee_uuid"/>
 	</set>
+	<!-- 与资源多对多 -->
 	<set name="resources" table="role_resource">
 		<key column="role_uuid"/>
 		<many-to-many class="org.erp.auth.resource.entity.ResourceModel" column="resource_uuid"/>
+	</set>
+	<!-- 与菜单多对多 -->
+	<set name="menus" table="role_menu">
+		<key column="role_uuid"/>
+		<many-to-many class="org.erp.auth.menu.entity.MenuModel" column="menu_uuid"/>
 	</set>
 </class>
 </hibernate-mapping>

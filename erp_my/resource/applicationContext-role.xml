@@ -17,11 +17,13 @@
 	<bean id="roleServ" class="org.erp.auth.role.service.impl.RoleServiceImpl">
 		<property name="roleDao" ref="roleDao"/>
 		<property name="resourceDao" ref="resourceDao"/>
+		<property name="menuDao" ref="menuDao"/>
 	</bean>
 
 	<!-- 配置Action层 -->
 	<bean id="roleAction" class="org.erp.auth.role.action.RoleAction" scope="prototype">
 		<property name="roleServ" ref="roleServ"/>
 		<property name="resourceServ" ref="resourceServ"/>
+		<property name="menuServ" ref="menuServ"/>
 	</bean>
 </beans>

@@ -2,6 +2,7 @@ package org.erp.util.base;
 
 import java.util.List;
 
+import org.erp.auth.menu.entity.MenuModel;
 import org.springframework.transaction.annotation.Transactional;
 @Transactional
 public interface BaseService<T> {
@@ -13,13 +14,13 @@ public interface BaseService<T> {
 
 	void save(T model);
 	
-	void save(T model,Long[] uuids);
+	
 
 	public T findById(Long uuid);
 
 	void update(T model);
 	
-	void update(T model,Long[] uuids);
+	
 
 	void delete(T entity);
 

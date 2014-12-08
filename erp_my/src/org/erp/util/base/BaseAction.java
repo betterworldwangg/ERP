@@ -5,11 +5,18 @@ import java.lang.reflect.Type;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+import org.apache.struts2.ServletActionContext;
 import org.erp.auth.department.service.service.DepartmentService;
 import org.erp.auth.employee.service.service.EmployeeService;
+import org.erp.auth.menu.service.service.MenuService;
 import org.erp.auth.resource.entity.ResourceModel;
 import org.erp.auth.resource.service.service.ResourceService;
 import org.erp.auth.role.service.service.RoleService;
+import org.erp.invoice.goodstype.service.service.GoodsTypeService;
+import org.erp.invoice.supplier.service.service.SupplierService;
 
 import com.opensymphony.xwork2.ActionContext;
 import com.opensymphony.xwork2.ActionSupport;
@@ -21,13 +28,16 @@ public class BaseAction<T> extends ActionSupport{
 	public static final String INPUTUI="inputUI";
 	
 	public int currPage = 1;
-	public int pageSize = 2;
+	public int pageSize = 8;
 	public int totalPage;
 	public int rows;
 	protected EmployeeService employeeServ;
 	protected DepartmentService departmentServ;
 	protected RoleService roleServ;
 	protected ResourceService resourceServ;
+	protected MenuService menuServ;
+	protected SupplierService supplierServ;
+	protected GoodsTypeService goodsTypeServ;
 	public List<T> list = new ArrayList<T>();
 	public T model;
 	public BaseAction() {
@@ -89,6 +99,32 @@ public class BaseAction<T> extends ActionSupport{
 	}
 	public void setResourceServ(ResourceService resourceServ) {
 		this.resourceServ = resourceServ;
+	}
+	public HttpServletRequest getRequest()
+	{
+		return ServletActionContext.getRequest();
+	}
+	public HttpServletResponse getResponse()
+	{
+		return ServletActionContext.getResponse();
+	}
+	public MenuService getMenuServ() {
+		return menuServ;
+	}
+	public void setMenuServ(MenuService menuServ) {
+		this.menuServ = menuServ;
+	}
+	public SupplierService getSupplierServ() {
+		return supplierServ;
+	}
+	public void setSupplierServ(SupplierService supplierServ) {
+		this.supplierServ = supplierServ;
+	}
+	public GoodsTypeService getGoodsTypeServ() {
+		return goodsTypeServ;
+	}
+	public void setGoodsTypeServ(GoodsTypeService goodsTypeServ) {
+		this.goodsTypeServ = goodsTypeServ;
 	}
 	
 }

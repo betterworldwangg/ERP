@@ -48,6 +48,7 @@ public class EmployeeModel
 	private String sexView;
 	private String birthDayView;
 	private String lastLoginTimeView;
+	private String resourceView;
 	//关联关系
 	private DepartmentModel departM;
 	private Set<RoleModel> roles = new HashSet<RoleModel>();
@@ -158,6 +159,12 @@ public class EmployeeModel
 	}
 	public void setRoles(Set<RoleModel> roles) {
 		this.roles = roles;
+	}
+	public String getResourceView() {
+		return resourceView;
+	}
+	public void setResourceView(String resourceView) {
+		this.resourceView = resourceView;
 	}
 	
 	

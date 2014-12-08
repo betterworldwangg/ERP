@@ -46,13 +46,17 @@ public class ResourceServiceImpl implements ResourceService
 	public List<ResourceModel> findAll() {
 		return resourceDao.findAll();
 	}
-	@Override
+	
 	public void save(ResourceModel model, Long[] uuids) {
 		
 	}
-	@Override
+
 	public void update(ResourceModel model, Long[] uuids) {
 		
+	}
+	@Override
+	public List<ResourceModel> findByEmpId(Long uuid) {
+		return resourceDao.findByEmpId(uuid);
 	}
 
 }

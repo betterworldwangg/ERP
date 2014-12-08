@@ -116,5 +116,26 @@ public class EmployeeServiceImpl implements EmployeeService
 		userPass=MD5Utils.md5(userPass);
 		return employeeDao.changePass(userName,userPass,newPass);
 	}
+	@Override
+	public EmployeeModel login(String userName, String userPass, String loginIp) {
+		EmployeeModel em = findByNameAndPass(userName, userPass);
+		if(em!=null)
+		{
+			em.setLastLoginIp(loginIp);
+			em.setLastLoginTime(System.currentTimeMillis());
+			em.setLoginTimes(em.getLoginTimes()+1);
+		}
+		return em;
+	}
+	@Override
+	public void save(RoleModel model, Long[] uuids, Long[] menuUuids) {
+		// TODO Auto-generated method stub
+		
+	}
+	@Override
+	public void update(RoleModel model, Long[] uuids, Long menuUuids) {
+		// TODO Auto-generated method stub
+		
+	}
 
 }
