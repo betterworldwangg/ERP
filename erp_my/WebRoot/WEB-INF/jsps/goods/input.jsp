@@ -4,7 +4,7 @@
 <link href="css/index.css" rel="stylesheet" type="text/css" />
 <script type="text/javascript" src="js/jquery-1.8.3.js"></script>
 <script type="text/javascript" src="js/Calendar.js"></script>
-<script type="text/javascript" src="js/my.js"></script>
+<script type="text/javascript" src="js/ajaxMy.js"></script>
 <script type="text/javascript">
 	$(function() {
 		$("#all").click(function() {
@@ -35,7 +35,8 @@
 	</div>
 	<div class="content-text">
 		<div class="square-order">
-			<form action="list.jsp" method="post">
+			<form action="goods_save" method="post">
+			<s:hidden name="model.uuid"/>
   			<div style="border:1px solid #cecece;">
 				<table width="100%"  border="0" cellpadding="0" cellspacing="0">
 				  <tr bgcolor="#FFFFFF">
@@ -69,11 +70,11 @@
 				    <tr  bgcolor="#FFFFFF">
 				      <td align="center">商品名称</td>
 				      <td>
-				      	<input type="text" size="25"/>
+				      	<s:textfield name="model.name" size="25"/>
 				      </td>
 				      <td  align="center">产&nbsp;&nbsp;&nbsp;&nbsp;地</td>
 				      <td >
-				      	<input type="text" size="25"/>
+				      	<s:textfield name="model.origin" size="25"/>
 				      </td>
 				    </tr>
 				     <tr bgcolor="#FFFFFF">
@@ -82,10 +83,10 @@
 				    <tr  bgcolor="#FFFFFF">
 				      <td height="30" align="center">生产厂家</td>
 				      <td>
-				      	<input type="text" size="25"/>
+				      	<s:textfield name="model.producer" size="25"/>
 				      <td align="center">单&nbsp;&nbsp;&nbsp;&nbsp;位</td>
 				      <td>
-				      	<input type="text" size="25"/>
+				      	<s:textfield name="model.unit" size="25"/>
 					  </td>
 				     </tr>
 				    <tr bgcolor="#FFFFFF">
@@ -94,27 +95,17 @@
 				    <tr  bgcolor="#FFFFFF">
 				      <td height="30" align="center">进货单价</td>
 				      <td>
-				      	<input type="text" size="25"/>
+				      	<s:textfield name="model.inPrice" size="25"/>
 					  </td>
 				      <td align="center">销售单价</td>
 				      <td>
-				      	<input type="text" size="25"/>
+				      	<s:textfield name="model.outPrice" size="25"/>
 					  </td>
 				    </tr>
 				    <tr bgcolor="#FFFFFF">
 					  <td colspan="4">&nbsp;</td>
 					</tr>
-				    <tr  bgcolor="#FFFFFF">
-				      <td height="30" align="center">体&nbsp;&nbsp;&nbsp;&nbsp;积</td>
-				      <td>
-				      	<input type="text" size="25"/>
-					  </td>
-				      <td align="center">&nbsp;</td>
-				      <td>&nbsp;</td>
-				    </tr>
-				     <tr bgcolor="#FFFFFF">
-					  <td colspan="4">&nbsp;</td>
-					</tr>
+				   
 				</table>
 			</div>
 			<div class="order-botton">

@@ -9,8 +9,8 @@ public class GoodsModel {
 	 private String origin;
 	 private String producer;
 	 private String unit;
-	 private String inPrice;
-	 private String outPrice;
+	 private Double inPrice;
+	 private Double outPrice;
 	 private GoodsTypeModel goodTypeMode;
 	 
 	public Long getUuid() {
@@ -43,16 +43,17 @@ public class GoodsModel {
 	public void setUnit(String unit) {
 		this.unit = unit;
 	}
-	public String getInPrice() {
+	
+	public Double getInPrice() {
 		return inPrice;
 	}
-	public void setInPrice(String inPrice) {
+	public void setInPrice(Double inPrice) {
 		this.inPrice = inPrice;
 	}
-	public String getOutPrice() {
+	public Double getOutPrice() {
 		return outPrice;
 	}
-	public void setOutPrice(String outPrice) {
+	public void setOutPrice(Double outPrice) {
 		this.outPrice = outPrice;
 	}
 	public GoodsTypeModel getGoodTypeMode() {

@@ -8,7 +8,7 @@
     <constant name="struts.ui.theme" value="simple" />
     <constant name="struts.custom.i18n.resources" value="mess"/>
     
-    <package name="default" namespace="/" extends="struts-default">
+    <package name="default" namespace="/" extends="json-default">
     	<interceptors>
     		 <interceptor name="loginInter" class="org.erp.util.interceptor.EmployLoginInterceptor"/>
     		 <interceptor name="exceptionInter" class="org.erp.util.interceptor.ExceptionInterceptor"/>
@@ -64,7 +64,13 @@
     	</action>
     	<!-- 商品 -->
     	<action name="goods_*" class="goodsAction" method="{1}">
-    	
+    		<result name="ajaxGetGdtBySuppId" type="json">
+    			<param name="root">action</param>
+    			<param name="includeProperties">
+    				goodsTypeList\[\d+\]\.uuid,
+    				goodsTypeList\[\d+\]\.name
+    			</param>
+    		</result>
     	</action>
     </package>
 </struts>

@@ -13,5 +13,6 @@
 	<property name="unit"/>
 	<property name="inPrice"/>
 	<property name="outPrice"/>
+	<many-to-one name="goodTypeMode" class="org.erp.invoice.goodstype.entity.GoodsTypeModel" column="goodsTypeUuid"></many-to-one>
 </class>
 </hibernate-mapping>

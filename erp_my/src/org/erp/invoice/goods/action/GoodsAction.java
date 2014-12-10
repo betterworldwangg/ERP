@@ -10,8 +10,12 @@ import org.erp.util.base.BaseAction;
 
 public class GoodsAction extends BaseAction<GoodsModel> {
 	public GoodsQueryModel ghq = new GoodsQueryModel();
+	public Long supplierUuid;
+	public List<GoodsTypeModel> goodsTypeList;
 	public String list()
 	{
+		List<SupplierModel> supplis = supplierServ.findAll();
+		put("supplis", supplis);
 		list = goodsServ.findAll(ghq, currPage, pageSize);
 		rows = goodsServ.rowCount(ghq);
 		totalPage = rows%pageSize ==0 ? rows/pageSize : rows/pageSize+1;
@@ -34,12 +38,13 @@ public class GoodsAction extends BaseAction<GoodsModel> {
 		List<SupplierModel> supplierList = supplierServ.findAll();
 		
 		put("supplierList", supplierList);
-		Long supplierUuid = supplierList.get(0).getUuid();
+		supplierUuid = supplierList.get(0).getUuid();
 		if(model.getUuid() != null)
 		{
 			model = goodsServ.findById(model.getUuid());
+			supplierUuid = model.getGoodTypeMode().getSupplierM().getUuid();
 		}
-		List<GoodsTypeModel> goodsTypeList = goodsTypeServ.findAllBySuppUuid(supplierUuid);
+		goodsTypeList = goodsTypeServ.findAllBySuppUuid(supplierUuid);
 		put("goodsTypeList", goodsTypeList);
 		return INPUTUI;
 	}
@@ -47,5 +52,23 @@ public class GoodsAction extends BaseAction<GoodsModel> {
 	{
 		goodsServ.delete(model);
 		return TO_LIST;
+	}
+	
+	public List<GoodsTypeModel> getGoodsTypeList() {
+		return goodsTypeList;
+	}
+	public void setGoodsTypeList(List<GoodsTypeModel> goodsTypeList) {
+		this.goodsTypeList = goodsTypeList;
+	}
+	public Long getSupplierUuid() {
+		return supplierUuid;
+	}
+	public void setSupplierUuid(Long supplierUuid) {
+		this.supplierUuid = supplierUuid;
+	}
+	public String ajaxGetGdtBySuppId()
+	{
+		goodsTypeList = goodsTypeServ.findAllBySuppUuid(supplierUuid);
+		return "ajaxGetGdtBySuppId";
 	}
 }
