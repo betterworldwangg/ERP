@@ -78,6 +78,7 @@ public abstract class BaseDaoImpl<T> implements BaseDao<T> {
 		highQuery(dhq, dct);
 		List<Long> counts = hibernateTemp.findByCriteria(dct);
 		
+		
 		return counts.get(0).intValue();
 	}
 	@Override

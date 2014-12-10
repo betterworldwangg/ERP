@@ -36,4 +36,20 @@ public class MenuDaoImpl extends BaseDaoImpl<MenuModel> implements MenuDao
 		
 		return hibernateTemp.find(hql, 1L,1L);
 	}
+
+	
+	public List<MenuModel> findByEmpUuid(Long uuid) {
+		String hql = "select distinct menu from EmployeeModel emp join emp.roles role join role.menus menu where emp.uuid=? and menu.parent.uuid=? order by menu.uuid";
+		
+		
+		return hibernateTemp.find(hql, uuid,1L);
+	}
+
+	@Override
+	public List<MenuModel> findByEmpAndParentUuid(Long uuid, Long uuid2) {
+		
+		String hql = "select distinct menu from EmployeeModel emp join emp.roles role join role.menus menu where emp.uuid=? and menu.parent.uuid=? order by menu.uuid";
+		
+		return hibernateTemp.find(hql, uuid,uuid2);
+	}
 }

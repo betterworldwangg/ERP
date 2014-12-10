@@ -62,5 +62,9 @@
     	<action name="goodsType_*" class="goodsTypeAction" method="{1}">
     	
     	</action>
+    	<!-- 商品 -->
+    	<action name="goods_*" class="goodsAction" method="{1}">
+    	
+    	</action>
     </package>
 </struts>

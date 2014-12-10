@@ -9,4 +9,8 @@ public interface MenuDao extends BaseDao<MenuModel>
 
 	List<MenuModel> findMenuParents();
 
+	List<MenuModel> findByEmpUuid(Long uuid);
+
+	List<MenuModel> findByEmpAndParentUuid(Long uuid, Long uuid2);
+
 }

@@ -10,11 +10,13 @@ import javax.servlet.http.HttpServletResponse;
 
 import org.apache.struts2.ServletActionContext;
 import org.erp.auth.department.service.service.DepartmentService;
+import org.erp.auth.employee.entity.EmployeeModel;
 import org.erp.auth.employee.service.service.EmployeeService;
 import org.erp.auth.menu.service.service.MenuService;
 import org.erp.auth.resource.entity.ResourceModel;
 import org.erp.auth.resource.service.service.ResourceService;
 import org.erp.auth.role.service.service.RoleService;
+import org.erp.invoice.goods.service.service.GoodsService;
 import org.erp.invoice.goodstype.service.service.GoodsTypeService;
 import org.erp.invoice.supplier.service.service.SupplierService;
 
@@ -38,6 +40,7 @@ public class BaseAction<T> extends ActionSupport{
 	protected MenuService menuServ;
 	protected SupplierService supplierServ;
 	protected GoodsTypeService goodsTypeServ;
+	protected GoodsService goodsServ;
 	public List<T> list = new ArrayList<T>();
 	public T model;
 	public BaseAction() {
@@ -68,6 +71,10 @@ public class BaseAction<T> extends ActionSupport{
 	public Object getSession(String name)
 	{
 		return ActionContext.getContext().getSession().get(name);
+	}
+	public EmployeeModel getLoginUser()
+	{
+		return (EmployeeModel) getSession("userName");
 	}
 	public String getActionName(){
 		String allName = getClass().getSimpleName();
@@ -125,6 +132,12 @@ public class BaseAction<T> extends ActionSupport{
 	}
 	public void setGoodsTypeServ(GoodsTypeService goodsTypeServ) {
 		this.goodsTypeServ = goodsTypeServ;
+	}
+	public GoodsService getGoodsServ() {
+		return goodsServ;
+	}
+	public void setGoodsServ(GoodsService goodsServ) {
+		this.goodsServ = goodsServ;
 	}
 	
 }

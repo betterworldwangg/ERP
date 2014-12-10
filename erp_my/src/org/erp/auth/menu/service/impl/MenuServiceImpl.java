@@ -60,5 +60,13 @@ public class MenuServiceImpl implements MenuService
 	public List<MenuModel> findMenuParents() {
 		return menuDao.findMenuParents();
 	}
+	@Override
+	public List<MenuModel> findByEmpUuid(Long uuid) {
+		return menuDao.findByEmpUuid(uuid);
+	}
+	@Override
+	public List<MenuModel> findByEmpAndParentUuid(Long uuid, Long uuid2) {
+		return menuDao.findByEmpAndParentUuid(uuid,uuid2);
+	}
 
 }

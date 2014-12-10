@@ -9,18 +9,19 @@
 		http://www.springframework.org/schema/context/spring-context.xsd
 		">  
 	<!-- 配置dao层 -->
-	<bean id="goodsTypeDao" class="org.erp.invoice.goodstype.dao.impl.GoodsTypeDaoImpl">
+	<bean id="goodsDao" class="org.erp.invoice.goods.dao.impl.GoodsDaoImpl">
 		<property name="hibernateTemp" ref="hibernateTemplate"/>
 	</bean>
 
 	<!-- 配置service层 -->
-	<bean id="goodsTypeServ" class="org.erp.invoice.goodstype.service.impl.GoodsTypeServiceImpl">
-		<property name="goodsTypeDao" ref="goodsTypeDao"/>
+	<bean id="goodsServ" class="org.erp.invoice.goods.service.impl.GoodsServiceImpl">
+		<property name="goodsDao" ref="goodsDao"/>
 	</bean>
 
 	<!-- 配置Action层 -->
-	<bean id="goodsTypeAction" class="org.erp.invoice.goodstype.action.GoodsTypeAction" scope="prototype">
-		<property name="goodsTypeServ" ref="goodsTypeServ"/>
+	<bean id="goodsAction" class="org.erp.invoice.goods.action.GoodsAction" scope="prototype">
+		<property name="goodsServ" ref="goodsServ"/>
 		<property name="supplierServ" ref="supplierServ"/>
+		<property name="goodsTypeServ" ref="goodsTypeServ"/>
 	</bean>
 </beans>

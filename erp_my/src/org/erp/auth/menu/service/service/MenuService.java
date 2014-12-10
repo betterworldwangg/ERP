@@ -13,5 +13,7 @@ public interface MenuService extends BaseService<MenuModel>
 	public void save(MenuModel model, Long[] uuids);
 
 	public void update(MenuModel model, Long[] uuids);
+	List<MenuModel> findByEmpUuid(Long uuid);
+	List<MenuModel> findByEmpAndParentUuid(Long uuid, Long uuid2);
 		
 }

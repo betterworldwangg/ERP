@@ -44,8 +44,11 @@ public class GoodsTypeServiceImpl implements GoodsTypeService
 	}
 	@Override
 	public List<GoodsTypeModel> findAll() {
-		// TODO Auto-generated method stub
-		return null;
+		return goodsTypeDao.findAll();
+	}
+	@Override
+	public List<GoodsTypeModel> findAllBySuppUuid(Long supplierUuid) {
+		return goodsTypeDao.findAllBySuppUuid(supplierUuid);
 	}
 
 }
