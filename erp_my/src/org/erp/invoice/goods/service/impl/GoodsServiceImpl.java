@@ -46,5 +46,9 @@ public class GoodsServiceImpl implements GoodsService
 	public List<GoodsModel> findAll() {
 		return goodsDao.findAll();
 	}
+	
+	public List<GoodsModel> findAllByGoodsTypeUuid(Long uuid) {
+		return goodsDao.findAllByGoodsTypeUuid(uuid);
+	}
 
 }

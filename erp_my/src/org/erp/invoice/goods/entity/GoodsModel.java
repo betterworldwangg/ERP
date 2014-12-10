@@ -1,6 +1,7 @@
 package org.erp.invoice.goods.entity;
 
 import org.erp.invoice.goodstype.entity.GoodsTypeModel;
+import org.erp.util.FormatNumber;
 
 public class GoodsModel {
 	
@@ -13,6 +14,23 @@ public class GoodsModel {
 	 private Double outPrice;
 	 private GoodsTypeModel goodTypeMode;
 	 
+	 //视图值
+	 private String inPriceView;
+	 private String outPriceView;
+	 
+	public String getInPriceView() {
+		return inPriceView;
+	}
+	public void setInPriceView(String inPriceView) {
+		this.inPriceView = inPriceView;
+	}
+	public String getOutPriceView() {
+		return outPriceView;
+	}
+	
+	public void setOutPriceView(String outPriceView) {
+		this.outPriceView = outPriceView;
+	}
 	public Long getUuid() {
 		return uuid;
 	}
@@ -49,6 +67,8 @@ public class GoodsModel {
 	}
 	public void setInPrice(Double inPrice) {
 		this.inPrice = inPrice;
+		this.inPriceView = FormatNumber.format(inPrice);
+				
 	}
 	public Double getOutPrice() {
 		return outPrice;

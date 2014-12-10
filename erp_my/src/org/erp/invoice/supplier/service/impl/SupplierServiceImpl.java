@@ -47,5 +47,9 @@ public class SupplierServiceImpl implements SupplierService
 		// TODO Auto-generated method stub
 		return supplierDao.findAll();
 	}
+	
+	public List<SupplierModel> findAllHaveGoods() {
+		return supplierDao.findAllHaveGoods();
+	}
 
 }

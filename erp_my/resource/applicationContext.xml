@@ -44,6 +44,7 @@
 				 <value>classpath:/org/erp/invoice/supplier/entity</value>
 				 <value>classpath:/org/erp/invoice/goodstype/entity</value>
 				 <value>classpath:/org/erp/invoice/goods/entity</value>
+				 <value>classpath:/org/erp/invoice/order/entity</value>
 			</list>
 		</property>
 	</bean>

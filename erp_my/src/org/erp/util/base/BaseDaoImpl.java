@@ -69,6 +69,7 @@ public abstract class BaseDaoImpl<T> implements BaseDao<T> {
 	public List<T> findAll(BaseModel dhq, int currPage, int pageSize) {
 		DetachedCriteria dct = DetachedCriteria.forClass(clazz);
 		highQuery(dhq,dct);
+		
 		return hibernateTemp.findByCriteria(dct, (currPage-1)*pageSize, pageSize);
 	}
 	@Override

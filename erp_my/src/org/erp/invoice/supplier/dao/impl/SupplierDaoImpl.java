@@ -1,5 +1,7 @@
 package org.erp.invoice.supplier.dao.impl;
 
+import java.util.List;
+
 import org.erp.invoice.supplier.dao.dao.SupplierDao;
 import org.erp.invoice.supplier.entity.SupplierModel;
 import org.erp.invoice.supplier.entity.SupplierQueryModel;
@@ -30,5 +32,13 @@ public class SupplierDaoImpl extends BaseDaoImpl<SupplierModel> implements Suppl
 		{
 			dct.add(Restrictions.eq("needs", shm.getNeeds()));
 		}
+	}
+
+	@Override
+	public List<SupplierModel> findAllHaveGoods() {
+		
+		String hql = " select distinct sup from GoodsModel goods join goods.goodTypeMode goodsType join goodsType.supplierM sup";
+		
+		return hibernateTemp.find(hql);
 	}
 }

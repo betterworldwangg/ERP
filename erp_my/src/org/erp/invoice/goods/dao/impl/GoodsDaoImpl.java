@@ -1,5 +1,7 @@
 package org.erp.invoice.goods.dao.impl;
 
+import java.util.List;
+
 import org.erp.invoice.goods.dao.dao.GoodsDao;
 import org.erp.invoice.goods.entity.GoodsModel;
 import org.erp.invoice.goods.entity.GoodsQueryModel;
@@ -53,5 +55,13 @@ public class GoodsDaoImpl extends BaseDaoImpl<GoodsModel> implements GoodsDao
 			dct.createAlias("goodTypeMode", "goodType");
 			dct.add(Restrictions.eq("goodType.supplierM", ghm.getGoodTypeMode().getSupplierM()));
 		}
+	}
+
+	
+	public List<GoodsModel> findAllByGoodsTypeUuid(Long uuid) {
+		
+		String hql = "from GoodsModel goods where goods.goodTypeMode.uuid = ?";
+		
+		return hibernateTemp.find(hql, uuid);
 	}
 }

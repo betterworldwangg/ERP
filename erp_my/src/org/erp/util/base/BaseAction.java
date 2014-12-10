@@ -18,6 +18,7 @@ import org.erp.auth.resource.service.service.ResourceService;
 import org.erp.auth.role.service.service.RoleService;
 import org.erp.invoice.goods.service.service.GoodsService;
 import org.erp.invoice.goodstype.service.service.GoodsTypeService;
+import org.erp.invoice.order.service.service.OrderService;
 import org.erp.invoice.supplier.service.service.SupplierService;
 
 import com.opensymphony.xwork2.ActionContext;
@@ -33,6 +34,7 @@ public class BaseAction<T> extends ActionSupport{
 	public int pageSize = 8;
 	public int totalPage;
 	public int rows;
+	
 	protected EmployeeService employeeServ;
 	protected DepartmentService departmentServ;
 	protected RoleService roleServ;
@@ -41,6 +43,8 @@ public class BaseAction<T> extends ActionSupport{
 	protected SupplierService supplierServ;
 	protected GoodsTypeService goodsTypeServ;
 	protected GoodsService goodsServ;
+	protected OrderService orderServ;
+	
 	public List<T> list = new ArrayList<T>();
 	public T model;
 	public BaseAction() {
@@ -138,6 +142,12 @@ public class BaseAction<T> extends ActionSupport{
 	}
 	public void setGoodsServ(GoodsService goodsServ) {
 		this.goodsServ = goodsServ;
+	}
+	public OrderService getOrderServ() {
+		return orderServ;
+	}
+	public void setOrderServ(OrderService orderServ) {
+		this.orderServ = orderServ;
 	}
 	
 }

@@ -72,5 +72,36 @@
     			</param>
     		</result>
     	</action>
+    	<!-- 订单 -->
+    	<action name="order_*" class="orderAction" method="{1}">
+    		<result name="list">/WEB-INF/jsps/order/in/inList.jsp</result>
+    		<result name="inputUI">/WEB-INF/jsps/order/in/input.jsp</result>
+    		<result name="ajaxGetGoodTypeBySupp" type="json">
+    			<param name="root">action</param>
+    			<param name="includeProperties">
+    				goodsTypeList\[\d+\]\.uuid,
+    				goodsTypeList\[\d+\]\.name,
+    				goodsList\[\d+\]\.uuid,
+    				goodsList\[\d+\]\.name,
+    				goods\.inPriceView
+    			</param>
+    			
+    		</result>
+    		<result name="ajaxGetGoodsByType" type="json">
+    			<param name="root">action</param>
+    			<param name="includeProperties">
+    				goodsList\[\d+\]\.uuid,
+    				goodsList\[\d+\]\.name,
+    				goods\.inPriceView
+    			</param>
+    		</result>
+    		<result name="ajaxGetPrice" type="json">
+   				<param name="root">goods</param>
+   				<param name="includeProperties">
+   					inPriceView
+   				</param>
+    		</result>
+    	</action>
+    	
     </package>
 </struts>
