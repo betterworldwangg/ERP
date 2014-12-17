@@ -21,6 +21,10 @@ import org.erp.auth.role.entity.RoleModel;
 import org.erp.invoice.goods.entity.GoodsModel;
 import org.erp.invoice.goodstype.entity.GoodsTypeModel;
 import org.erp.invoice.order.entity.OrderModel;
+import org.erp.invoice.orderdetail.entity.OrderDetailModel;
+import org.erp.invoice.store.entity.StoreModel;
+import org.erp.invoice.storedetail.entity.StoreDetailModel;
+import org.erp.invoice.storeoperate.entity.StoreOperateModel;
 import org.erp.invoice.supplier.entity.SupplierModel;
 import org.erp.util.base.BaseAction;
 import org.erp.util.base.BaseDao;
@@ -595,7 +599,7 @@ public class GeneratorUtils {
 	}
 	public static void main(String[] args) {
 		
-		new GeneratorUtils(OrderModel.class);
+		new GeneratorUtils(StoreOperateModel.class);
 	}
 
 }

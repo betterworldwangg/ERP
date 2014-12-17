@@ -1,5 +1,7 @@
 package org.erp.auth.employee.service.service;
 
+import java.util.List;
+
 import org.erp.auth.employee.entity.EmployeeModel;
 import org.erp.auth.role.entity.RoleModel;
 import org.erp.util.base.BaseService;
@@ -20,5 +22,7 @@ public interface EmployeeService extends BaseService<EmployeeModel>
 	public void save(RoleModel model, Long[] uuids,Long[] menuUuids);
 	
 	public void update(RoleModel model, Long[] uuids,Long menuUuids);
+
+	List<EmployeeModel> findByDepartUuid(Long uuid);
 
 }

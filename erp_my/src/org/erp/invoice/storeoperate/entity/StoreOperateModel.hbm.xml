@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+        '-//Hibernate/Hibernate Mapping DTD 3.0//EN'
+        'http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd'>
+<hibernate-mapping>
+<class name="org.erp.invoice.storeoperate.entity.StoreOperateModel" table="storeOperate">
+	<id name="uuid">
+		<generator class="native"/>
+	</id>
+	<property name="num"/>
+	<property name="operTime"/>
+	<property name="type"/>
+	<many-to-one name="storeM" class="org.erp.invoice.store.entity.StoreModel" column="storeM"/>
+	<many-to-one name="empM" class="org.erp.auth.employee.entity.EmployeeModel" column="empM"/>
+	<many-to-one name="goodsM" class="org.erp.invoice.goods.entity.GoodsModel" column="goodsM"/>
+	<many-to-one name="orderDetailM" class="org.erp.invoice.orderdetail.entity.OrderDetailModel" column="orderDetailM"/>
+</class>
+</hibernate-mapping>

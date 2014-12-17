@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xsi:schemaLocation="
+		http://www.springframework.org/schema/beans 
+		http://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/context 
+		http://www.springframework.org/schema/context/spring-context.xsd
+		">  
+	<!-- 配置dao层 -->
+	<bean id="storeOperateDao" class="org.erp.invoice.storeoperate.dao.impl.StoreOperateDaoImpl">
+		<property name="hibernateTemp" ref="hibernateTemplate"/>
+	</bean>
+
+	<!-- 配置service层 -->
+	<bean id="storeOperateServ" class="org.erp.invoice.storeoperate.service.impl.StoreOperateServiceImpl">
+		<property name="storeOperateDao" ref="storeOperateDao"/>
+	</bean>
+
+	<!-- 配置Action层 -->
+	<bean id="storeOperateAction" class="org.erp.invoice.storeoperate.action.StoreOperateAction" scope="prototype">
+		<property name="storeOperateServ" ref="storeOperateServ"/>
+	</bean>
+</beans>

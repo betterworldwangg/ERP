@@ -5,6 +5,13 @@
 <script type="text/javascript" src="js/jquery-1.8.3.js"></script>
 </script>
 <script type="text/javascript" src="js/ajaxMy.js"></script>
+<script type="text/javascript">
+	$(function(){
+		$("#submitOrder").click(function(){
+			$("form:first").submit();
+		});
+	});
+</script>
 <div class="content-right">
 	<div class="content-r-pic_w">
 		<div style="margin:8px auto auto 12px;margin-top:6px">
@@ -12,7 +19,7 @@
 		</div>
 	</div>
 	<div class="content-text">
-		<form action="inList.jsp" method="post">
+		<form action="order_save" method="post">
 			<div class="square-o-top">
 				<table width="100%" border="0" cellpadding="0" cellspacing="0"
 					style="font-size:14px; font-weight:bold; font-family:"黑体";">
@@ -22,7 +29,7 @@
 					<tr>
 						<td width="68px" height="30">供应商：</td>
 						<td width="648px">
-							<s:select id="ordsupplier" list="supplierList" listKey="uuid" listValue="name"/>
+							<s:select name="model.supplier.uuid" id="ordsupplier" list="supplierList" listKey="uuid" listValue="name"/>
 							 <%-- <select class="kuan" style="width:190px">
 								<option value="1">七匹狼</option>
 								<option value="0">康师傅</option>
@@ -48,22 +55,22 @@
 					</tr>
 					<tr align="center" bgcolor="#FFFFFF">
 						<td height="30">
-							<s:select id="orderGoodType" list="goodsTypeList" listKey="uuid" listValue="name"/>
+							<s:select  cssClass="goodsType" id="orderGoodType" list="goodsTypeList" listKey="uuid" listValue="name"/>
 							<%-- <select class="goodsType" style="width:200px">
 								<option value="1">上衣</option>
 								<option value="0">秋裤</option>
 							</select> --%>
 						</td>
 						<td>
-							<s:select class="ordergoods" id="ordergoods" list="goodsList" listKey="uuid" listValue="name"/>
+							<s:select name="goodsUuids" cssClass="ordergoods" id="ordergoods" list="goodsList" listKey="uuid" listValue="name"/>
 							<%-- <select class="goods" style="width:200px">
 								<option value="1">绿色纯棉加厚</option>
 								<option value="0">黄色纯棉加厚</option>
 							</select> --%>
 						</td>
 						<td><input name="nums" class="num order_num" style="width:67px;border:1px solid black;text-align:right;padding:2px" type="text" value="1"/></td>
-						<td><input name="prices" class="prices order_num" style="width:93px;border:1px solid black;text-align:right;padding:2px" type="text" value="100"/> 元</td>
-						<td class="total" align="right"></td>
+						<td><input name="prices" class="prices order_num" style="width:93px;border:1px solid black;text-align:right;padding:2px" type="text" value="${goods.inPriceView }"/> 元</td>
+						<td class="total" align="right">${goods.inPriceView }</td>
 						<td>
 							<a class="deleteBtn delete xiu" value="4"><img src="images/icon_04.gif" /> 删除</a>
 						</td>
@@ -71,7 +78,7 @@
 					<tr id="finalTr" align="center"
 						style="background:url(images/table_bg.gif) repeat-x;">
 						<td height="30" colspan="4" align="right">总&nbsp;计:&nbsp;</td>
-						<td class="all" width="16%" align="right">100.00&nbsp;元</td>
+						<td class="all" width="16%" align="right">${goods.inPriceView }&nbsp;元</td>
 						<td>&nbsp;</td>
 					</tr>
 				</table>

@@ -137,5 +137,9 @@ public class EmployeeServiceImpl implements EmployeeService
 		// TODO Auto-generated method stub
 		
 	}
+	@Override
+	public List<EmployeeModel> findByDepartUuid(Long uuid) {
+		return employeeDao.findByDepartUuid(uuid);
+	}
 
 }

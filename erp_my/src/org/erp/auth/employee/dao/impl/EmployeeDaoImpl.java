@@ -65,4 +65,10 @@ public class EmployeeDaoImpl extends BaseDaoImpl<EmployeeModel> implements Emplo
 		String hql = "update EmployeeModel e set e.userPass=? where userName=? and userPass= ?";
 		return hibernateTemp.bulkUpdate(hql, newPass,userName,userPass)>0 ? true : false;
 	}
+
+	@Override
+	public List<EmployeeModel> findByDepartUuid(Long uuid) {
+		String hql = "from EmployeeModel where departM.uuid=?";
+		return hibernateTemp.find(hql, uuid);
+	}
 }

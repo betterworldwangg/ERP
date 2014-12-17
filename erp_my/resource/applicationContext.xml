@@ -45,6 +45,10 @@
 				 <value>classpath:/org/erp/invoice/goodstype/entity</value>
 				 <value>classpath:/org/erp/invoice/goods/entity</value>
 				 <value>classpath:/org/erp/invoice/order/entity</value>
+				 <value>classpath:/org/erp/invoice/orderdetail/entity</value>
+				 <value>classpath:/org/erp/invoice/store/entity</value>
+				 <value>classpath:/org/erp/invoice/storedetail/entity</value>
+				 <value>classpath:/org/erp/invoice/storeoperate/entity</value>
 			</list>
 		</property>
 	</bean>

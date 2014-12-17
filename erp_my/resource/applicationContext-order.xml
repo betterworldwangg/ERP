@@ -16,6 +16,9 @@
 	<!-- 配置service层 -->
 	<bean id="orderServ" class="org.erp.invoice.order.service.impl.OrderServiceImpl">
 		<property name="orderDao" ref="orderDao"/>
+		<property name="orderDetailDao" ref="orderDetailDao"/>
+		<property name="storeDetailDao" ref="storeDetailDao"/>
+		<property name="storeOperateDao" ref="storeOperateDao"/>
 	</bean>
 
 	<!-- 配置Action层 -->
@@ -24,5 +27,7 @@
 		<property name="supplierServ" ref="supplierServ"/>
 		<property name="goodsTypeServ" ref="goodsTypeServ"/>
 		<property name="goodsServ" ref="goodsServ"/>
+		<property name="employeeServ" ref="employeeServ"/>
+		<property name="storeServ" ref="storeServ"/>
 	</bean>
 </beans>

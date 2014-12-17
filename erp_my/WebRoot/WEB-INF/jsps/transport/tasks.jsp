@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@taglib prefix="s" uri="/struts-tags"%>
-<link href="../../../css/index.css" rel="stylesheet" type="text/css" />
-<script type="text/javascript" src="../../../js/jquery-1.8.3.js"></script>
+<link href="css/index.css" rel="stylesheet" type="text/css" />
+<script type="text/javascript" src="js/jquery-1.8.3.js"></script>
 <script type="text/javascript">
 	$(function() {
 		$("#query").click(function() {
@@ -39,7 +39,7 @@
 							</select>
 						</td>
 						<td width=""><a id="query"> 
-							<img src="../../../images/can_b_01.gif" border="0" /> </a>
+							<img src="images/can_b_01.gif" border="0" /> </a>
 						</td>
 					</tr>
 				</table>
@@ -48,30 +48,36 @@
 			<div class="square-order">
 				<table width="100%" border="1" cellpadding="0" cellspacing="0">
 					<tr align="center"
-						style="background:url(../../../images/table_bg.gif) repeat-x;">
+						style="background:url(images/table_bg.gif) repeat-x;">
 						<td width="8%" height="30">订单类别</td>
-						<td width="11%">供应商</td>
+						<td width="20%">供应商</td>
 						<td width="7%">发货方式</td>
 						<td width="6%">联系人</td>
-						<td width="12%">联系方式</td>
-						<td width="40%">地址</td>
-						<td width="8%">地址</td>
+						<td width="20%">联系方式</td>
+						<td width="20%">地址</td>
+						<td width="8%">状态</td>
 						<td width="6%">详情</td>
 					</tr>
-						<tr align="center" bgcolor="#FFFFFF">
-							<td height="30">采购</td>
-							<td>七匹狼</td>
-							<td>送货</td>
-							<td>狼外婆</td>
-							<td>119</td>
-							<td align="left">&nbsp;狼堡</td>
-							<td>正在采购</td>
-							<td>
-								<a href="./taskDetail.jsp">
-									<img src="../../../images/icon_3.gif" />详情
-								</a>
-							</td>
-						</tr>
+						<s:iterator value="list">
+							<tr align="center" bgcolor="#FFFFFF">
+								<td height="30">${orderTypeView }</td>
+								<td>${supplier.name }</td>
+								<td>${supplier.needsView }</td>
+								<td>${supplier.contact }</td>
+								<td>${supplier.phone }</td>
+								<td align="left">&nbsp;${supplier.address }</td>
+								<td>${typeView}</td>
+								<td>
+									<s:a action="transport_taskDetail">
+										<s:param name="model.uuid" value="uuid"/>
+										详情
+									</s:a>
+									<!-- <a href="./taskDetail.jsp">
+										<img src="images/icon_3.gif" />详情
+									</a> -->
+								</td>
+							</tr>
+						</s:iterator>
 				</table>
 			</div>
 		</form>

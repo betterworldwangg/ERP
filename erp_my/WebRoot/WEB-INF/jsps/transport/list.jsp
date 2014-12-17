@@ -1,9 +1,9 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@taglib prefix="s" uri="/struts-tags"%>
-<link href="../../../css/index.css" rel="stylesheet" type="text/css" />
-<script type="text/javascript" src="../../../js/jquery-1.8.3.js"></script>
-<script type="text/javascript" src="../../../js/Calendar.js"></script>
+<link href="css/index.css" rel="stylesheet" type="text/css" />
+<script type="text/javascript" src="js/jquery-1.8.3.js"></script>
+<script type="text/javascript" src="js/Calendar.js"></script>
 <script type="text/javascript">
 	$(function() {
 		$("#query").click(function() {
@@ -44,7 +44,7 @@
 						<td><input type="text" size="10" /></td>
 						<td>&nbsp;</td>
 						<td><a id="query"> 
-							<img src="../../../images/can_b_01.gif" border="0" /> </a>
+							<img src="images/can_b_01.gif" border="0" /> </a>
 						</td>
 					</tr>
 					<tr>
@@ -75,7 +75,7 @@
 			<div class="square-order">
 				<table width="100%" border="1" cellpadding="0" cellspacing="0">
 					<tr align="center"
-						style="background:url(../../../images/table_bg.gif) repeat-x;">
+						style="background:url(images/table_bg.gif) repeat-x;">
 						<td width="10%" height="30">订单类别</td>
 						<td width="13%">下单时间</td>
 						<td width="13%">制单人</td>
@@ -85,51 +85,34 @@
 						<td width="13%">发货方式</td>
 						<td width="10%">跟单人</td>
 					</tr>
+						<s:iterator value="list">
 						<tr align="center" bgcolor="#FFFFFF">
-							<td height="30">采购</td>
-							<td>2014-01-01</td>
-							<td>张三</td>
-							<td>2014-01-04</td>
-							<td>李四</td>
-							<td>七匹狼</td>
-							<td>自提</td>
+							<td height="30">${orderTypeView }</td>
+							<td>${createTimeView }</td>
+							<td>${creator.name }</td>
+							<td>${checkTimeView }</td>
+							<td>${checker.name }</td>
+							<td>${supplier.name }</td>
+							<td>${supplier.needsView }</td>
 							<td>
-									<img src="../../../images/icon_3.gif" /> 
+									<img src="images/icon_3.gif" /> 
 									<span style="line-height:12px; text-align:center;"> 
-										<a href="assignTask.jsp" class="xiu">任务指派
-										</a> 
+									<s:if test="type == @org.erp.invoice.order.entity.OrderModel@ORDER_TYPE_BUY_CHECK_PASS">
+										<s:a action="transport_inputTrans">
+											<s:param name="model.uuid" value="uuid"/>
+											任务指派
+										</s:a>
+									</s:if>
+										<!-- <a href="assignTask.jsp" class="xiu">任务指派
+										</a>  -->
+									<s:else>
+										${completor.name }
+									</s:else>
 									</span>
 							</td>
 						</tr>
-						<tr align="center" bgcolor="#FFFFFF">
-							<td height="30">采购</td>
-							<td>2014-01-01</td>
-							<td>张三</td>
-							<td>2014-01-04</td>
-							<td>李四</td>
-							<td>七匹狼</td>
-							<td>自提</td>
-							<td>
-									张送货
-							</td>
-						</tr>
-						<tr align="center" bgcolor="#FFFFFF">
-							<td height="30">采购</td>
-							<td>2014-01-01</td>
-							<td>张三</td>
-							<td>2014-01-04</td>
-							<td>李四</td>
-							<td>七匹狼</td>
-							<td>自提</td>
-							<td>
-									<img src="../../../images/icon_3.gif" /> 
-									<span style="line-height:12px; text-align:center;"> 
-										<s:a action="transportAction_toTask" cssClass="xiu">任务指派
-											<s:param name="om.uuid" value="uuid" />
-										</s:a> 
-									</span>
-							</td>
-						</tr>
+						</s:iterator>
+						
 				</table>
 			</div>
 		</form>

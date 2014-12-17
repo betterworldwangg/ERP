@@ -1,8 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@taglib prefix="s" uri="/struts-tags"%>
-<link href="../../../css/index.css" rel="stylesheet" type="text/css" />
-<script type="text/javascript" src="../../../js/jquery-1.8.3.js"></script>
+<link href="css/index.css" rel="stylesheet" type="text/css" />
+<script type="text/javascript" src="js/jquery-1.8.3.js"></script>
 <script type="text/javascript">
 	$(function() {
 		$("#task").click(function() {
@@ -22,23 +22,23 @@
 					style="font-size:14px; font-weight:bold; font-family:"黑体";">
 					<tr>
 						<td height="30">企业名称:</td>
-						<td class="order_show_msg">七匹狼</td>
+						<td class="order_show_msg">${model.supplier.name }</td>
 						<td height="30">订单类别:</td>
-						<td class="order_show_msg">采购</td>
+						<td class="order_show_msg">${model.orderTypeView }</td>
 						<td>提货方式:</td>
-						<td class="order_show_msg">自提</td>
+						<td class="order_show_msg">${model.supplier.needsView }</td>
 						<td>订 单 号:</td>
-						<td class="order_show_msg" colspan="2">asdfjy8af9dsu</td>
+						<td class="order_show_msg" colspan="2">${model.orderNum }</td>
 					</tr>
 					<tr>
 						<td>联&nbsp;系&nbsp;人:</td>
-						<td class="order_show_msg">灰太狼</td>
+						<td class="order_show_msg">${model.supplier.contact }</td>
 						<td>联系方式:</td>
-						<td class="order_show_msg">748748</td>
+						<td class="order_show_msg">${model.supplier.phone }</td>
 						<td>商品总量:</td>
-						<td class="order_show_msg">300</td>
+						<td class="order_show_msg">${model.totalNum }</td>
 						<td>地&nbsp;&nbsp;&nbsp;&nbsp;址:</td>
-						<td class="order_show_msg">狼堡</td>
+						<td class="order_show_msg">${model.supplier.address }</td>
 					</tr>
 				</table>
 			</div>
@@ -48,40 +48,34 @@
 				<br/>
 				<table width="100%" border="1" cellpadding="0" cellspacing="0">
 					<tr align="center"
-						style="background:url(../../../images/table_bg.gif) repeat-x;">
+						style="background:url(images/table_bg.gif) repeat-x;">
 						<td width="20%" height="30">商品类别</td>
 						<td width="50%">商品名称</td>
 						<td width="30%">数量</td>
 					</tr>
-						<tr align="center" bgcolor="#FFFFFF">
-							<td height="30">上衣</td>
-							<td>狼皮背心</td>
-							<td>100</td>
-						</tr>
-						<tr align="center" bgcolor="#FFFFFF">
-							<td height="30">上衣</td>
-							<td>狼皮毛背心</td>
-							<td>100</td>
-						</tr>
-						<tr align="center" bgcolor="#FFFFFF">
-							<td height="30">上衣</td>
-							<td>狼皮棉背心</td>
-							<td>100</td>
-						</tr>
+						<s:iterator value="model.orderDetails">
+							<tr align="center" bgcolor="#FFFFFF">
+								<td height="30">${goodsM.goodTypeMode.name }</td>
+								<td>${goodsM.name }</td>
+								<td>${num }</td>
+							</tr>
+						</s:iterator>
 				</table>
 				<br/>
-				<form action="list.jsp" method="post">
+				<form action="transport_transportToEmp" method="post">
 				<table width="100%">
 					<tr>
 						<td width="50%" align="right">
-							
-							<select style="width:100px;font-size:20px">
+							<s:hidden name="model.uuid"/>
+							<s:select name="model.completor.uuid"  list="empList" listKey="uuid" listValue="name">
+							</s:select>
+						<%-- 	<select style="width:100px;font-size:20px">
 								<option value="1">小灰灰</option>
 								<option value="0">懒洋洋</option>
-							</select>
+							</select> --%>
 						</td>
 						<td width="50%" align="left">
-							<a id="task" href="javascript:void(0)" style="color:#0f0;font-size:20px;padding-top:2px;font-weight:bold;text-decoration:none;width:82px;height:28px;display:block;background:url(../../../images/btn_bg.jpg)">
+							<a id="task" href="javascript:void(0)" style="color:#0f0;font-size:20px;padding-top:2px;font-weight:bold;text-decoration:none;width:82px;height:28px;display:block;background:url(images/btn_bg.jpg)">
 								&nbsp;派&nbsp;&nbsp;单
 							</a>
 						</td>

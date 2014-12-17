@@ -23,7 +23,7 @@
     	</interceptors>
     	<default-interceptor-ref name="systemStack"/>
     	<global-results>
-    		<result name="loginFail">/WEB-INF/jsps/login.jsp</result>
+    		<result name="loginFail">index.jsp</result>
     		<result name="error">/WEB-INF/jsps/error.jsp</result>
     		<result name="list">/WEB-INF/jsps/${actionName}/list.jsp</result>
     		<result name="inputUI">/WEB-INF/jsps/${actionName}/input.jsp</result>
@@ -74,8 +74,20 @@
     	</action>
     	<!-- 订单 -->
     	<action name="order_*" class="orderAction" method="{1}">
+    		<!-- 订单 -->
     		<result name="list">/WEB-INF/jsps/order/in/inList.jsp</result>
+    		<result name="toList" type="redirectAction">order_list</result>
     		<result name="inputUI">/WEB-INF/jsps/order/in/input.jsp</result>
+    		<result name="detail">/WEB-INF/jsps/order/in/inDetailList.jsp</result>
+    		<!-- 订单审查 -->
+    		<result name="approveList">/WEB-INF/jsps/order/in/inApproveList.jsp</result>
+    		<result name="approve">/WEB-INF/jsps/order/in/inApprove.jsp</result>
+    		<result name="checkPass" type="redirectAction">order_inApproveList</result>
+    		<!-- 订单入库 -->
+    		<result name="inStoreList">/WEB-INF/jsps/store/in/list.jsp</result>
+    		<result name="inStoreDetail">/WEB-INF/jsps/store/in/inDetail.jsp</result>
+    		
+    		
     		<result name="ajaxGetGoodTypeBySupp" type="json">
     			<param name="root">action</param>
     			<param name="includeProperties">
@@ -101,7 +113,43 @@
    					inPriceView
    				</param>
     		</result>
+    		<result name="ajaxInstore" type="json">
+    			<param name="root">orderM</param>
+    			<param name="includeProperties">
+    				num,
+    				surplus
+    			</param>
+    		</result>
     	</action>
-    	
+    	<!-- 订单详细 -->
+    	<action name="orderDetail_*" class="orderDetailAction" method="{1}">
+    		<result name="ajaxFindByUuid" type="json">
+    			<param name="root">model</param>
+    			<param name="includeProperties">
+    				surplus
+    			</param>
+    		</result>
+    	</action>
+    	<!-- 运输任务指配 -->
+    	<action name="transport_*" class="orderAction" method="{1}">
+    		<result name="transportList">/WEB-INF/jsps/transport/list.jsp</result>
+    		<result name="transportInput">/WEB-INF/jsps/transport/assignTask.jsp</result>
+    		<result name="transportToEmp" type="redirectAction">transport_transportList</result>
+    		<result name="tasksList">/WEB-INF/jsps/transport/tasks.jsp</result>
+    		<result name="taskDetail">/WEB-INF/jsps/transport/taskDetail.jsp</result>
+    		<result name="endTask" type="redirectAction">transport_tasks</result>
+    	</action>
+    	<!-- 仓库 -->
+    	<action name="store_*" class="storeAction" method="{1}">
+    		
+    	</action>
+    	<!-- 仓库明细 -->
+    	<action name="storeDetail_*" class="storeDetailAction" method="{1}">
+    		<result name="storeDetailList">/WEB-INF/jsps/store/detail/list.jsp</result>
+    	</action>
+    	<!-- 仓库操作明细 -->
+    	<action name="storeOperate_*" class="storeOperateAction" method="{1}">
+    		<result name="storeOperateList">/WEB-INF/jsps/store/oper/list.jsp</result>
+    	</action>
     </package>
 </struts>

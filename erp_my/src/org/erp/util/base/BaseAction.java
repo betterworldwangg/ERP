@@ -19,6 +19,11 @@ import org.erp.auth.role.service.service.RoleService;
 import org.erp.invoice.goods.service.service.GoodsService;
 import org.erp.invoice.goodstype.service.service.GoodsTypeService;
 import org.erp.invoice.order.service.service.OrderService;
+import org.erp.invoice.orderdetail.service.service.OrderDetailService;
+import org.erp.invoice.store.service.service.StoreService;
+import org.erp.invoice.storedetail.entity.StoreDetailModel;
+import org.erp.invoice.storedetail.service.service.StoreDetailService;
+import org.erp.invoice.storeoperate.service.service.StoreOperateService;
 import org.erp.invoice.supplier.service.service.SupplierService;
 
 import com.opensymphony.xwork2.ActionContext;
@@ -44,6 +49,10 @@ public class BaseAction<T> extends ActionSupport{
 	protected GoodsTypeService goodsTypeServ;
 	protected GoodsService goodsServ;
 	protected OrderService orderServ;
+	protected OrderDetailService orderDetailServ;
+	protected StoreService storeServ;
+	protected StoreDetailService storeDetailServ;
+	protected StoreOperateService storeOperateServ;
 	
 	public List<T> list = new ArrayList<T>();
 	public T model;
@@ -149,5 +158,33 @@ public class BaseAction<T> extends ActionSupport{
 	public void setOrderServ(OrderService orderServ) {
 		this.orderServ = orderServ;
 	}
+	public StoreService getStoreServ() {
+		return storeServ;
+	}
+	public void setStoreServ(StoreService storeServ) {
+		this.storeServ = storeServ;
+	}
+	public OrderDetailService getOrderDetailServ() {
+		return orderDetailServ;
+	}
+	public void setOrderDetailServ(OrderDetailService orderDetailServ) {
+		this.orderDetailServ = orderDetailServ;
+	}
+	public StoreDetailService getStoreDetailServ() {
+		return storeDetailServ;
+	}
+	public void setStoreDetailServ(StoreDetailService storeDetailServ) {
+		this.storeDetailServ = storeDetailServ;
+	}
+	public StoreOperateService getStoreOperateServ() {
+		return storeOperateServ;
+	}
+	public void setStoreOperateServ(StoreOperateService storeOperateServ) {
+		this.storeOperateServ = storeOperateServ;
+	}
+	public T getModel() {
+		return model;
+	}
+	
 	
 }

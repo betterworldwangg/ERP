@@ -14,6 +14,14 @@ public class EmployLoginInterceptor extends AbstractInterceptor {
 		EmployeeModel sessionEmplo = (EmployeeModel) ActionContext.getContext().getSession().get("userName");
 		String actionName = invocation.getAction().getClass().getName();
 		String methodName = invocation.getProxy().getMethod();
+		
+		String location = invocation.getProxy().getActionName();
+		
+		if("page_login".equals(location))
+		{
+			return invocation.invoke();
+		}
+		
 		if((actionName+"."+methodName).equals("org.erp.auth.employee.action.EmployeeAction.login"))
 		{
 			return invocation.invoke();

@@ -3,10 +3,25 @@
         '-//Hibernate/Hibernate Mapping DTD 3.0//EN'
         'http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd'>
 <hibernate-mapping>
-<class name="org.erp.invoice.order.entity.OrderModel" table="order">
+<class name="org.erp.invoice.order.entity.OrderModel" table="erp_order">
 	<id name="uuid">
 		<generator class="native"/>
 	</id>
-	<property name="count"/>
+	<property name="orderNum"/>
+	<property name="totalNum"/>
+	<property name="totalPrice"/>
+	<property name="createTime"/>
+	<property name="checkTime"/>
+	<property name="endTime"/>
+	<property name="orderType"/>
+	<property name="type"/>
+	<many-to-one name="checker" class="org.erp.auth.employee.entity.EmployeeModel" column="checker"/>
+	<many-to-one name="creator" class="org.erp.auth.employee.entity.EmployeeModel" column="creator"/>
+	<many-to-one name="completor" class="org.erp.auth.employee.entity.EmployeeModel" column="completor"/>
+	<many-to-one name="supplier" class="org.erp.invoice.supplier.entity.SupplierModel" column="supplierUuid"/>
+	<set name="orderDetails" cascade="save-update" inverse="true">
+		<key column="orderUuid"/>
+		<one-to-many class="org.erp.invoice.orderdetail.entity.OrderDetailModel"/>
+	</set>
 </class>
 </hibernate-mapping>

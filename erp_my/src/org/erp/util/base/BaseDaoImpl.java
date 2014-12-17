@@ -6,6 +6,7 @@ import java.util.List;
 
 import javax.annotation.Resource;
 
+import org.erp.invoice.order.entity.OrderModel;
 import org.hibernate.criterion.DetachedCriteria;
 import org.hibernate.criterion.Projections;
 import org.hibernate.criterion.Restrictions;
@@ -67,6 +68,7 @@ public abstract class BaseDaoImpl<T> implements BaseDao<T> {
 	@SuppressWarnings("unchecked")
 	@Override
 	public List<T> findAll(BaseModel dhq, int currPage, int pageSize) {
+		
 		DetachedCriteria dct = DetachedCriteria.forClass(clazz);
 		highQuery(dhq,dct);
 		

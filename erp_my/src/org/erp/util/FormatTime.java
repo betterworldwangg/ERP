@@ -8,6 +8,10 @@ public class FormatTime {
 	
 	public static String formatTime(Long time)
 	{
+		if(time == null)
+		{
+			return "";
+		}
 		DateFormat df = new SimpleDateFormat("yyyy-MM-dd");
 		return df.format(new Date(time));
 	}

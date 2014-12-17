@@ -71,4 +71,5 @@ public class GoodsAction extends BaseAction<GoodsModel> {
 		goodsTypeList = goodsTypeServ.findAllBySuppUuid(supplierUuid);
 		return "ajaxGetGdtBySuppId";
 	}
+	
 }
