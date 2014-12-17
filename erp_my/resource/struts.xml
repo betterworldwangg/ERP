@@ -151,5 +151,26 @@
     	<action name="storeOperate_*" class="storeOperateAction" method="{1}">
     		<result name="storeOperateList">/WEB-INF/jsps/store/oper/list.jsp</result>
     	</action>
+    	<!-- 报表 -->
+    	<action name="bill_*" class="billAction" method="{1}">
+    		<result name="billList">/WEB-INF/jsps/bill/in/inGoods.jsp</result>
+    		<result name="ajaxFindODmByGoods" type="json">
+    			<param name="root">orderDeList</param>
+    			<param name="includeProperties">
+    				\[\d+\]\.orderM\.orderNum,
+    				\[\d+\]\.orderM\.createTimeView,
+    				\[\d+\]\.num,
+    				\[\d+\]\.priceView,
+    				\[\d+\]\.totalPriceView
+    			</param>
+    		</result>
+    		<!-- EXECEL文件下载 -->
+    		<result name="getExecelBill" type="stream">
+    			<param name="inputName">downloadInput</param>
+    			<!-- 告知服务器文件类别 -->
+    			<param name="contentType">application/vnd.ms-excel</param>
+    			<param name="contentDisposition">attachment;filename="${execelName}.xls"</param>
+    		</result>
+    	</action>
     </package>
 </struts>
